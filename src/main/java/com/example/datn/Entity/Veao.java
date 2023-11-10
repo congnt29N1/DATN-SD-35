@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,30 +11,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "kichco")
-public class KichCo {
+@Table(name = "veao")
+public class Veao {
     @Id
-    @Column(name = "id_kich_co")
+    @Column(name = "id_ve_ao")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idKichCo;
+    private Integer idVeao;
 
-    @Column(name = "ten_kich_co")
-    private String tenKichCo;
+    @Column(name = "ten_ve_ao")
+    private String tenVeao;
 
-    @Column(name = "mo_ta_kich_co")
-    private String moTaKichCo;
+    @Column(name = "mo_ta_ve_ao")
+    private String moTaVeao;
 
-    @Column(name = "ngay_tao_kich_co")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date ngayTaoKichCo;
     @Column(name = "enabled",nullable = false)
     private boolean enabled;
-
 }
