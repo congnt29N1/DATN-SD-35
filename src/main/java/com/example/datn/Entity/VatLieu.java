@@ -17,15 +17,18 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "mausac")
-public class MauSac {
+@Table(name = "vatlieu")
+public class VatLieu {
     @Id
-    @Column(name = "id_mau_sac")
+    @Column(name = "id_vat_lieu")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idMauSac;
+    private Integer idVatLieu;
 
-    @Column(name = "ten_mau_sac")
-    private String tenMauSac;
+    @Column(name = "ten_vat_lieu")
+    private String tenVatLieu;
+
+    @Column(name = "mo_ta_vat_lieu")
+    private String moTaVatLieu;
 
     @Column(name = "enabled",nullable = false)
     private boolean enabled;
