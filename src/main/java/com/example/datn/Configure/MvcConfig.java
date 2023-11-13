@@ -1,6 +1,6 @@
 package com.example.datn.Configure;
 
-import com.datn.dongho5s.Utils.DateToTimestampConverter;
+import com.example.datn.Utils.DateToTimestampConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
