@@ -1,10 +1,8 @@
 package com.example.datn.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -16,34 +14,38 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "anhsanpham")
-public class AnhSanPham {
+@ToString
+@Table(name = "seri")
+public class Seri {
     @Id
-    @Column(name = "id_anh_san_pham")
+    @Column(name = "id_seri")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idAnhSanPham;
+    private Integer idSeri;
 
-    @Column(name = "link")
-    private String link;
+    @Column(name = "id_imei")
+    private String idImei;
 
-    @Column(name = "ten_anh")
-    private String tenAnh;
-
-    @JsonIgnore
     @ManyToOne
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @JoinColumn(name = "id_san_pham")
-    private SanPham sanPham;
+    @JoinColumn(name = "id_chi_tiet_san_pham")
+    private ChiTietSanPham chiTietSanPham;
 
-    public AnhSanPham(String tenAnh, SanPham sanPham) {
-        this.tenAnh = tenAnh;
-        this.sanPham = sanPham;
-    }
+    @Column(name = "ngay_nhap")
+    private Timestamp ngayNhap;
+
+    @Column(name = "ngay_ban")
+    private Timestamp ngayBan;
+
+    @Column(name = "trang_thai")
+    private Integer trangThai;
+
+    @ManyToOne
+    @JoinColumn(name = "id_hoa_don_chi_tiet")
+    private HoaDonChiTiet hoaDonChiTiet;
 }
