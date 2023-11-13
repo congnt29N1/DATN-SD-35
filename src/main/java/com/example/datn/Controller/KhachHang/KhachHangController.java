@@ -24,10 +24,10 @@ public class KhachHangController {
 
     @GetMapping("/admin/customers")
     public String listFirstPage(Model model){
-        HttpSession session = request.getSession();
-        if(session.getAttribute("admin") == null ){
-            return "redirect:/login-admin" ;
-        }
+//        HttpSession session = request.getSession();
+//        if(session.getAttribute("admin") == null ){
+//            return "redirect:/login-admin" ;
+//        }
         return listByPage(1,model,"tenKhachHang","asc",null);
     }
 
@@ -35,10 +35,10 @@ public class KhachHangController {
     private String listByPage(@PathVariable(name = "pageNum") int pageNum, Model model,
                               @Param("sortField") String sortField,@Param("sortDir") String sortDir,
                               @Param("keyword") String keyword){
-        HttpSession session = request.getSession();
-        if(session.getAttribute("admin") == null ){
-            return "redirect:/login-admin" ;
-        }
+//        HttpSession session = request.getSession();
+//        if(session.getAttribute("admin") == null ){
+//            return "redirect:/login-admin" ;
+//        }
         Page<KhachHang> page = service.listByPage(pageNum,sortField,sortDir,keyword);
         List<KhachHang> listKhachHang = page.getContent();
         long startCount = (pageNum -1) * KhachHangService.CUSTOMERS_PER_PAGE +1;
