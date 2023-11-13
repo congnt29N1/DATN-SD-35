@@ -1,4 +1,4 @@
-package com.example.datn.Controller;
+package com.example.datn.Controller.mausac;
 
 import com.example.datn.Entity.MauSac;
 import com.example.datn.Exception.MauSacNotFoundException;
@@ -26,9 +26,10 @@ public class MauSacController {
     MauSacService mauSacService;
     @Autowired
     HttpServletRequest request;
+
     @GetMapping
     public String listFirstPage(Model model){
-//        HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
 //        if(session.getAttribute("admin") == null ){
 //            return "redirect:/login-admin" ;
 //        }
@@ -40,7 +41,7 @@ public class MauSacController {
                              @Param("sortField")String sortField , @Param("sortDir")String sortDir,
                              @Param("keyword")String keyword
     ){
-//        HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
 //        if(session.getAttribute("admin") == null ){
 //            return "redirect:/login-admin" ;
 //        }
@@ -73,7 +74,7 @@ public class MauSacController {
     public String updateMauSacEnabledStatus(@PathVariable("id") Integer id,
                                             @PathVariable("status") boolean enabled,
                                             RedirectAttributes redirectAttributes){
-//        HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
 //        if(session.getAttribute("admin") == null ){
 //            return "redirect:/login-admin" ;
 //        }
@@ -86,7 +87,7 @@ public class MauSacController {
 
     @GetMapping("/new")
     public String newDanhMuc(Model model){
-//        HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
 //        if(session.getAttribute("admin") == null ){
 //            return "redirect:/login-admin" ;
 //        }
@@ -97,7 +98,7 @@ public class MauSacController {
 
     @PostMapping("/save")
     public String saveDanhMuc(MauSac mauSac, RedirectAttributes redirectAttributes){
-//        HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
 //        if(session.getAttribute("admin") == null ){
 //            return "redirect:/login-admin" ;
 //        }
@@ -113,9 +114,9 @@ public class MauSacController {
 
         try{
             HttpSession session = request.getSession();
-            if(session.getAttribute("admin") == null ){
-                return "redirect:/login-admin" ;
-            }
+//            if(session.getAttribute("admin") == null ){
+//                return "redirect:/login-admin" ;
+//            }
             MauSac mauSac = mauSacService.get(id);
             model.addAttribute("mauSac", mauSac);
             model.addAttribute("pageTitle","Cập nhật");
