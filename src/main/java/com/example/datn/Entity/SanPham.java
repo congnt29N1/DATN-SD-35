@@ -41,6 +41,10 @@ public class SanPham {
     private String maSanPham;
 
     @ManyToOne
+    @JoinColumn(name = "id_thuong_hieu")
+    private ThuongHieu thuongHieu;
+
+    @ManyToOne
     @JoinColumn(name = "id_danh_muc")
     private DanhMuc danhMuc;
 
