@@ -143,8 +143,10 @@
 
     <a th:fragment="mausac_link(pageNum, label)"
        class="page-link"
+       th:href="@{'/admin/xeta/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword' + keyword : ''}}"> [[${label}]]</a>
+    <a th:fragment="xeta_link(pageNum, label)"
+       class="page-link"
        th:href="@{'/admin/colors/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword' + keyword : ''}}"> [[${label}]]</a>
-
     <a th:fragment="page_link(pageNum, label)"
         class="page-link"
        th:href="@{'/admin/users/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword' + keyword : ''}}"> [[${label}]]</a>
