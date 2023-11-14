@@ -1,4 +1,4 @@
-package com.datn.dongho5s.GiaoHangNhanhService.APIResponseEntity;
+package com.datn.GiaoHangNhanhService.APIResponseEntity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

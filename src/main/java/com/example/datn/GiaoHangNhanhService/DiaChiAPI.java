@@ -1,13 +1,15 @@
-package com.datn.dongho5s.GiaoHangNhanhService;
+package com.example.datn.GiaoHangNhanhService;
 
 import com.datn.dongho5s.GiaoHangNhanhService.APIResponseEntity.BaseListResponse;
 import com.datn.dongho5s.GiaoHangNhanhService.APIResponseEntity.PhuongXaResponse;
 import com.datn.dongho5s.GiaoHangNhanhService.APIResponseEntity.QuanHuyenResponse;
-import com.datn.dongho5s.GiaoHangNhanhService.APIResponseEntity.TinhThanhResponse;
-import com.datn.dongho5s.Cache.DiaChiCache;
+import com.example.datn.Cache.DiaChiCache;
+import com.example.datn.GiaoHangNhanhService.APIResponseEntity.TinhThanhResponse;
+import com.example.datn.GiaoHangNhanhService.Constant;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -17,6 +19,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Service;
+
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.datn.dongho5s.GiaoHangNhanhService.APIResponseEntity;
+package com.example.datn.GiaoHangNhanhService.APIResponseEntity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,5 +15,4 @@ public class TinhThanhResponse {
     private Integer provinceID;
     @JsonProperty("ProvinceName")
     private String provinceName;
-
 }

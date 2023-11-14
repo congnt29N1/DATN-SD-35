@@ -1,4 +1,4 @@
-package com.datn.dongho5s.GiaoHangNhanhService;
+package com.example.datn.GiaoHangNhanhService;
 
 public class Constant {
     public static final String TOKEN = "14c14a31-1dbd-11ee-8bfa-8a2dda8ec551";

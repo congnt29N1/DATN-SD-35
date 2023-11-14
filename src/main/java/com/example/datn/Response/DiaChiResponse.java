@@ -1,6 +1,6 @@
 package com.datn.dongho5s.Response;
 
-import com.datn.dongho5s.Entity.KhachHang;
+import com.example.datn.Entity.KhachHang;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
