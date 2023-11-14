@@ -60,6 +60,7 @@ public class MainController {
             NhanVien userEntity = nhanVienRepository.getNhanVienByEmail(loginAdminRequest.getEmail());
             // Thêm nhân viên mã hoá mật khẩu thì dùng
             nhanVienService.encodePassword(userEntity);
+            nhanVienService.nhanVienUpdateAccount(userEntity);
             if (passwordEncoder.matches(loginAdminRequest.getPassword(),userEntity.getMatKhau())){
 //            if (loginAdminRequest.getPassword().equals(userEntity.getMatKhau())){
                 session.setAttribute("admin",userEntity);
