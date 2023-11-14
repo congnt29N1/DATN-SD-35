@@ -35,7 +35,6 @@ public class KichCo {
     @Column(name = "ngay_tao_kich_co")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngayTaoKichCo;
-
     @Column(name = "enabled",nullable = false)
     private boolean enabled;
 
