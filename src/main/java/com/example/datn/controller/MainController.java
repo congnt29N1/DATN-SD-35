@@ -4,6 +4,7 @@ import com.example.datn.Entity.NhanVien;
 import com.example.datn.repository.NhanVienRepository;
 import com.example.datn.request.LoginAdminRequest;
 import com.example.datn.security.AccountFilterService;
+import com.example.datn.service.NhanVienService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -34,6 +35,8 @@ public class MainController {
     HttpServletRequest httpServletRequest;
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    NhanVienService nhanVienService;
     @GetMapping("/admin")
     public String home(){
         HttpSession session = httpServletRequest.getSession();
@@ -51,13 +54,16 @@ public class MainController {
         return "redirect:/login-admin";
     }
     @PostMapping("/post/login")
-    public ModelAndView authenticateUser(@Valid LoginAdminRequest loginAdminRequest, BindingResult bindingResult, Model model) throws Exception{
+    public ModelAndView authenticateUser(@Valid LoginAdminRequest loginAdminRequest, Model model) throws Exception{
         HttpSession session = httpServletRequest.getSession();
         try{
             NhanVien userEntity = nhanVienRepository.getNhanVienByEmail(loginAdminRequest.getEmail());
+            // Thêm nhân viên mã hoá mật khẩu thì dùng
+            nhanVienService.encodePassword(userEntity);
             if (passwordEncoder.matches(loginAdminRequest.getPassword(),userEntity.getMatKhau())){
+//            if (loginAdminRequest.getPassword().equals(userEntity.getMatKhau())){
                 session.setAttribute("admin",userEntity);
-                ModelAndView modelAndView = new ModelAndView("redirect:/admin/index");
+                ModelAndView modelAndView = new ModelAndView("redirect:/admin");
                 return modelAndView;
             }else {
                 model.addAttribute("error","Đăng nhập không thành công. Hãy kiểm tra lại email và mật khẩu.");

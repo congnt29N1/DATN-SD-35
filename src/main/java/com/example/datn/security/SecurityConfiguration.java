@@ -25,11 +25,11 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        return new UserDetailsService() {
-//            @Override
-//            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //                KhachHang customer = khachHangRepository.getKhachHangByEmail(username);
 //
 //                if (customer != null) {
@@ -37,16 +37,17 @@ public class SecurityConfiguration {
 //              } else {
 //                    throw new UsernameNotFoundException("Không tìm thấy người dùng với email: " + username);
 //                }
-//            }
-//        };
-//    }
-//    @Bean
-//    public AuthenticationProvider getProvider() {
-//        DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
-//        provider.setPasswordEncoder(passwordEncoder());
-//        provider.setUserDetailsService(userDetailsService());
-//        return provider;
-//    }
+                return null;
+            }
+        };
+    }
+    @Bean
+    public AuthenticationProvider getProvider() {
+        DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(passwordEncoder());
+        provider.setUserDetailsService(userDetailsService());
+        return provider;
+    }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
