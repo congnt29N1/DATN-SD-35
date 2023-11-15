@@ -74,6 +74,15 @@
               th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
     </th>
 
+    <th th:fragment="kieudet_link(fieldkieuDet, columnLabel)">
+        <a style="text-decoration: none; color: black"
+           th:href="@{'/admin/kieudet/page/' + ${currentPage} + '?sortField=' + ${fieldkieuDet} + '&sortDir=' + ${sortField != fieldkieuDet ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
+            [[${columnLabel}]]
+        </a>
+        <span th:if="${sortField == fieldkieuDet}" style="text-decoration: none; color: black"
+              th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
+    </th>
+
     <th th:fragment="daydeo_link(fieldDayDeo, columnLabel)">
         <a style="text-decoration: none; color: black"
            th:href="@{'/admin/straps/page/' + ${currentPage} + '?sortField=' + ${fieldDayDeo} + '&sortDir=' + ${sortField != fieldDayDeo ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
