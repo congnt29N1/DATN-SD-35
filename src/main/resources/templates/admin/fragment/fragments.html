@@ -65,6 +65,17 @@
               th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
     </th>
 
+
+    <th th:fragment="hoatiet_link(fieldHoaTiet, columnLabel)">
+        <a style="text-decoration: none; color: black"
+           th:href="@{'/admin/design/page/' + ${currentPage} + '?sortField=' + ${fieldHoaTiet} + '&sortDir=' + ${sortField != fieldHoaTiet ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
+            [[${columnLabel}]]
+        </a>
+        <span th:if="${sortField == fieldHoaTiet}" style="text-decoration: none; color: black"
+              th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
+    </th>
+
+
     <th th:fragment="kieutui_link(fieldkieutui, columnLabel)">
         <a style="text-decoration: none; color: black"
            th:href="@{'/admin/kieutui/page/' + ${currentPage} + '?sortField=' + ${fieldkieutui} + '&sortDir=' + ${sortField != fieldDanhMuc ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
@@ -180,6 +191,11 @@
     <a th:fragment="pagecategory_link(pageNum, label)"
        class="page-link"
        th:href="@{'/admin/categories/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword' + keyword : ''}}"> [[${label}]]</a>
+
+    <a th:fragment="pagedesign_link(pageNum, label)"
+       class="page-link"
+       th:href="@{'/admin/design/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword' + keyword : ''}}"> [[${label}]]</a>
+
 
     <a th:fragment="pagebrand_link(pageNum, label)"
        class="page-link"

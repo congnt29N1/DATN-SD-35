@@ -28,6 +28,7 @@ public class KichCoServiceImpl implements KichCoService {
         return kichCoRepository.findAll(Sort.by("tenKichCo").ascending());
     }
 
+
     @Override
     public Page<KichCo> listByPage(int pageNumber, String sortField, String sortDir, String keyword) {
         Sort sort = Sort.by(sortField);
@@ -37,6 +38,7 @@ public class KichCoServiceImpl implements KichCoService {
             return kichCoRepository.findAll(keyword,pageable);
         }
         return kichCoRepository.findAll(pageable);
+
     }
 
     @Override
