@@ -1,5 +1,6 @@
 package com.example.datn.Response;
 
+import com.example.datn.Entity.KichCo;
 import com.example.datn.Entity.KieuDet;
 import com.example.datn.Entity.ChatLieu;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @Builder
 public class TimKiemSettingResponse {
     private List<MauSac>listmauSac;
+    private List<KichCo> listKichCo;
     private List<KieuDet>listkieuDet;
     private List<ChatLieu>listchatLieu;
 }
