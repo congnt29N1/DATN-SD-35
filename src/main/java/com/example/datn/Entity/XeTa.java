@@ -35,4 +35,5 @@ public class XeTa {
 
     @Column(name = "enabled",nullable = false)
     private boolean enabled;
+    //xeta
 }

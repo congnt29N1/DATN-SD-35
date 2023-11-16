@@ -22,4 +22,12 @@ public class TimKiemRequest {
     private List<Integer> danhMucId;
     @JsonProperty("tenSanPham")
     private String tenSanPham;
+    @JsonProperty("sizeId")
+    private List<Integer> sizeId;
+    @JsonProperty("xeTaId")
+    private List<Integer> xeTaId;
+    private List<Integer> kieuDetId;
+    @JsonProperty("chatlieuId")
+    private List<Integer> chatlieuId;
+
 }
