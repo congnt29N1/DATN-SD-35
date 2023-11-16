@@ -17,4 +17,9 @@ public class TimKiemRequest {
     private List<Integer> mauSacId;
     @JsonProperty("sizeId")
     private List<Integer> sizeId;
+    @JsonProperty("xeTaId")
+    private List<Integer> xeTaId;
+    private List<Integer> kieuDetId;
+    @JsonProperty("chatlieuId")
+    private List<Integer> chatlieuId;
 }
