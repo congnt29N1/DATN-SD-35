@@ -1,4 +1,4 @@
-package com.example.datn.Controller.KichCo;
+package com.example.datn.Controller.kichco;
 
 import com.example.datn.Entity.KichCo;
 import com.example.datn.Exception.KichCoNotFoundException;
@@ -27,24 +27,23 @@ public class KichCoController {
     private KichCoService service;
     @Autowired
     HttpServletRequest request;
-
     @GetMapping("/admin/sizes")
     public String listFirstPage(Model model){
         HttpSession session = request.getSession();
-        if(session.getAttribute("admin") == null ){
-            return "redirect:/login-admin" ;
-        }
+//        if(session.getAttribute("admin") == null ){
+//            return "redirect:/login-admin" ;
+//        }
         return listByPage(1,model,"tenKichCo","asc",null);
     }
 
     @GetMapping("/admin/sizes/page/{pageNum}")
     private String listByPage(@PathVariable(name = "pageNum") int pageNum, Model model,
-                              @Param("sortField") String sortField,@Param("sortDir") String sortDir,
+                              @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                               @Param("keyword") String keyword){
         HttpSession session = request.getSession();
-        if(session.getAttribute("admin") == null ){
-            return "redirect:/login-admin" ;
-        }
+//        if(session.getAttribute("admin") == null ){
+//            return "redirect:/login-admin" ;
+//        }
 
         Page<KichCo> page = service.listByPage(pageNum,sortField,sortDir,keyword);
         List<KichCo> listKichCo = page.getContent();
@@ -70,12 +69,12 @@ public class KichCoController {
 
     @GetMapping("/admin/sizes/{id}/enabled/{status}")
     public String updateKichCoEnabledStatus(@PathVariable("id") Integer id,
-                                             @PathVariable("status")boolean enabled,
-                                             RedirectAttributes redirectAttributes){
+                                            @PathVariable("status")boolean enabled,
+                                            RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-        if(session.getAttribute("admin") == null ){
-            return "redirect:/login-admin" ;
-        }
+//        if(session.getAttribute("admin") == null ){
+//            return "redirect:/login-admin" ;
+//        }
         service.updateKichCoEnabledStatus(id,enabled);
         String status = enabled ? "online" : "offline";
         String message = "Kích Cỡ có id " + id + " thay đổi trạng thái thành " + status;
@@ -86,9 +85,9 @@ public class KichCoController {
     @GetMapping("/admin/sizes/new")
     public String newKichCo(Model model){
         HttpSession session = request.getSession();
-        if(session.getAttribute("admin") == null ){
-            return "redirect:/login-admin" ;
-        }
+//        if(session.getAttribute("admin") == null ){
+//            return "redirect:/login-admin" ;
+//        }
         model.addAttribute("KichCo",new KichCo());
         model.addAttribute("pageTitle","Tạo Mới Kích Cỡ");
         return "admin/kichco/size_form";
@@ -97,9 +96,9 @@ public class KichCoController {
     @PostMapping("/admin/sizes/save")
     public String saveKichCo(KichCo KichCo, RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-        if(session.getAttribute("admin") == null ){
-            return "redirect:/login-admin" ;
-        }
+//        if(session.getAttribute("admin") == null ){
+//            return "redirect:/login-admin" ;
+//        }
         service.save(KichCo);
         redirectAttributes.addFlashAttribute("message","Thay Đổi Thành Công");
         return "redirect:/admin/sizes";
@@ -107,13 +106,13 @@ public class KichCoController {
 
     @GetMapping("/admin/sizes/edit/{id}")
     public String editKichCo(@PathVariable(name = "id") Integer id,
-                              Model model,
-                              RedirectAttributes redirectAttributes){
+                             Model model,
+                             RedirectAttributes redirectAttributes){
         try {
             HttpSession session = request.getSession();
-            if(session.getAttribute("admin") == null ){
-                return "redirect:/login-admin" ;
-            }
+//            if(session.getAttribute("admin") == null ){
+//                return "redirect:/login-admin" ;
+//            }
             KichCo KichCo = service.get(id);
             model.addAttribute("KichCo", KichCo);
             model.addAttribute("pageTitle", "Update Kích Cỡ (ID: " + id + ")");
