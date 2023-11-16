@@ -4,7 +4,7 @@ package com.example.datn.Response;
 import com.example.datn.Entity.DanhMuc;
 import com.example.datn.Entity.KichCo;
 
-import com.example.datn.Entity.KichCo;
+
 import com.example.datn.Entity.KieuDet;
 import com.example.datn.Entity.ChatLieu;
 
@@ -28,7 +28,6 @@ public class TimKiemSettingResponse {
     private List<KichCo> listKichCo;
     private List<MauSac> listMauSac;
     private List<MauSac>listmauSac;
-    private List<KichCo> listKichCo;
     private List<KieuDet>listkieuDet;
     private List<ChatLieu>listchatLieu;
 
