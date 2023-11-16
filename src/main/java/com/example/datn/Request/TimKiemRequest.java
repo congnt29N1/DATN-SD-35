@@ -15,6 +15,7 @@ import java.util.List;
 public class TimKiemRequest {
     @JsonProperty("mauSacId")
     private List<Integer> mauSacId;
+    private List<Integer> kieuDetId;
     @JsonProperty("chatlieuId")
     private List<Integer> chatlieuId;
 }
