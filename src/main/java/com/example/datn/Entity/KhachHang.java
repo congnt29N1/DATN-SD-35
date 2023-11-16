@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +30,9 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Table(name = "khachhang")
-public class KhachHang {
+public class KhachHang
+//        implements UserDetails
+{
     @Id
     @Column(name = "id_khach_hang")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -80,7 +81,7 @@ public class KhachHang {
 //        authorities.add(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
 //        return  authorities;
 //    }
-
+//
 //    @Override
 //    public String getPassword() {
 //      return this.password;

@@ -1,6 +1,8 @@
 package com.example.datn.Response;
 
 import com.example.datn.Entity.KieuDet;
+import com.example.datn.Entity.ChatLieu;
+
 import com.example.datn.Entity.MauSac;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,4 +18,5 @@ import java.util.List;
 public class TimKiemSettingResponse {
     private List<MauSac>listmauSac;
     private List<KieuDet>listkieuDet;
+    private List<ChatLieu>listchatLieu;
 }
