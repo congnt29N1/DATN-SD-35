@@ -1,6 +1,5 @@
 package com.example.datn.Service.Impl;
 
-
 import com.example.datn.Entity.KichCo;
 import com.example.datn.Exception.KichCoNotFoundException;
 import com.example.datn.Repository.KichCoRepository;
@@ -18,10 +17,12 @@ import java.util.List;
 public class KichCoServiceImpl implements KichCoService {
     @Autowired
     KichCoRepository kichCoRepository;
+
     @Override
     public List<KichCo> getAllKichCo() {
         return kichCoRepository.findAll();
     }
+
     @Override
     public List<KichCo> getAllPaginationKichCo() {
         return kichCoRepository.findAll(Sort.by("tenKichCo").ascending());
