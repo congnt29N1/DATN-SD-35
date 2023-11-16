@@ -65,6 +65,15 @@
               th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
     </th>
 
+    <th th:fragment="kieutui_link(fieldkieutui, columnLabel)">
+        <a style="text-decoration: none; color: black"
+           th:href="@{'/admin/kieutui/page/' + ${currentPage} + '?sortField=' + ${fieldkieutui} + '&sortDir=' + ${sortField != fieldDanhMuc ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
+            [[${columnLabel}]]
+        </a>
+        <span th:if="${sortField == fieldkieutui}" style="text-decoration: none; color: black"
+              th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
+    </th>
+
     <th th:fragment="thuonghieu_link(fieldThuongHieu, columnLabel)">
         <a style="text-decoration: none; color: black"
            th:href="@{'/admin/brands/page/' + ${currentPage} + '?sortField=' + ${fieldThuongHieu} + '&sortDir=' + ${sortField != fieldThuongHieu ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
