@@ -77,7 +77,7 @@ public class DanhMucController {
     }
 
     @GetMapping("/admin/categories/{id}/enabled/{status}")
-    public String updateDanhMucEnabledStatus(@PathVariable("id") Integer id,
+    public String updateHoaTietEnabledStatus(@PathVariable("id") Integer id,
                                              @PathVariable("status") boolean enabled,
                                              RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
