@@ -1,6 +1,6 @@
 package com.example.datn.Controller.veao;
 
-import com.example.datn.Entity.Veao;
+import com.example.datn.Entity.VeAo;
 import com.example.datn.Exception.VeAoNotFoundException;
 import com.example.datn.Export.VeAoCsvExporter;
 import com.example.datn.Export.VeAoExcelExporter;
@@ -46,8 +46,8 @@ public class VeAoController {
 //            return "redirect:/login-admin" ;
 //        }
 
-        Page<Veao> page = veAoService.listByPage(pageNum,sortField,sortDir,keyword);
-        List<Veao> listVeAo = page.getContent();
+        Page<VeAo> page = veAoService.listByPage(pageNum,sortField,sortDir,keyword);
+        List<VeAo> listVeAo = page.getContent();
         long startCount = (pageNum -1) * VeAoService.MATERIALS_PER_PAGE +1;
         long endCount = startCount + VeAoService.MATERIALS_PER_PAGE-1;
         if(endCount > page.getTotalElements()){
@@ -89,13 +89,13 @@ public class VeAoController {
 //        if(session.getAttribute("admin") == null ){
 //            return "redirect:/login-admin" ;
 //        }
-        model.addAttribute("veAo",new Veao());
+        model.addAttribute("veAo",new VeAo());
         model.addAttribute("pageTitle","Tạo Mới ve áo");
         return "admin/veao/veao_form";
     }
 
     @PostMapping("/admin/veao/save")
-    public String saveVatLieu(Veao veao, RedirectAttributes redirectAttributes){
+    public String saveVatLieu(VeAo veao, RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
 //        if(session.getAttribute("admin") == null ){
 //            return "redirect:/login-admin" ;
@@ -115,7 +115,7 @@ public class VeAoController {
 //            if(session.getAttribute("admin") == null ){
 //                return "redirect:/login-admin" ;
 //            }
-            Veao veao = veAoService.get(id);
+            VeAo veao = veAoService.get(id);
             model.addAttribute("veAo", veao);
             model.addAttribute("pageTitle", "Update Ve áo(ID: " + id + ")");
             return "admin/veao/veao_form";
@@ -130,14 +130,14 @@ public class VeAoController {
 
     @GetMapping("/admin/veao/export/csv")
     public void exportToCSV(HttpServletResponse response) throws IOException {
-        List<Veao> listVatLieu = veAoService.getAllVeAo();
+        List<VeAo> listVatLieu = veAoService.getAllVeAo();
         VeAoCsvExporter exporter = new VeAoCsvExporter();
         exporter.export(listVatLieu,response);
     }
 
     @GetMapping("/admin/veao/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
-        List<Veao> listVeAo = veAoService.getAllVeAo();
+        List<VeAo> listVeAo = veAoService.getAllVeAo();
         VeAoExcelExporter exporter = new VeAoExcelExporter();
         exporter.export(listVeAo,response);
     }

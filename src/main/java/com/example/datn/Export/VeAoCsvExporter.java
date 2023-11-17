@@ -1,6 +1,6 @@
 package com.example.datn.Export;
 
-import com.example.datn.Entity.Veao;
+import com.example.datn.Entity.VeAo;
 import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class VeAoCsvExporter extends AbstractExporter {
-    public void export(List<Veao> listVeAo, HttpServletResponse response)throws IOException {
+    public void export(List<VeAo> listVeAo, HttpServletResponse response)throws IOException {
         super.setResponseHeader(response,"text/csv",".csv","material_");
 
         ICsvBeanWriter csvBeanWriter = new CsvBeanWriter(response.getWriter(),
@@ -19,7 +19,7 @@ public class VeAoCsvExporter extends AbstractExporter {
         String[] filedMapping = {"idVatLieu","tenVatLieu","moTaVatLieu","enabled"};
 
         csvBeanWriter.writeHeader(csvHeader);
-        for (Veao veAo: listVeAo){
+        for (VeAo veAo: listVeAo){
             csvBeanWriter.write(veAo,filedMapping);
         }
         csvBeanWriter.close();

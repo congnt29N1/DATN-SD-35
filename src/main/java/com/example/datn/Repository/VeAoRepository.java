@@ -1,6 +1,6 @@
 package com.example.datn.Repository;
 
-import com.example.datn.Entity.Veao;
+import com.example.datn.Entity.VeAo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,13 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface VeAoRepository extends JpaRepository<Veao,Integer> {
-    @Query("UPDATE Veao va SET va.enabled = ?2 WHERE va.idVeao = ?1")
+public interface VeAoRepository extends JpaRepository<VeAo,Integer> {
+    @Query("UPDATE VeAo va SET va.enabled = ?2 WHERE va.idVeAo = ?1")
     @Modifying
     void updateEnabledStatus(Integer id, boolean enabled);
 
-    @Query("SELECT va FROM Veao va WHERE UPPER(CONCAT(va.idVeao, ' ', va.tenVeao, ' ', va.moTaVeao)) LIKE %?1%")
-    public Page<Veao> findAll(String keyword, Pageable pageable);
+    @Query("SELECT va FROM VeAo va WHERE UPPER(CONCAT(va.idVeAo, ' ', va.tenVeAo, ' ', va.moTaVeAo)) LIKE %?1%")
+    public Page<VeAo> findAll(String keyword, Pageable pageable);
 
-    public Veao findByTenVeao(String ten);
+    public VeAo findByTenVeao(String ten);
 }
