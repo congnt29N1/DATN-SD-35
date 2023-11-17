@@ -16,7 +16,7 @@ public class KieuTuiCsvExporter extends AbstractExporter{
         ICsvBeanWriter csvBeanWriter = new CsvBeanWriter(response.getWriter(),
                 CsvPreference.STANDARD_PREFERENCE);
         String[] csvHeader = {"ID","Name","Description","Enabled"};
-        String[] filedMapping = {"idVatLieu","tenVatLieu","moTaVatLieu","enabled"};
+        String[] filedMapping = {"idKieuTui","tenChatLieu","moTaChatLieu","enabled"};
 
         csvBeanWriter.writeHeader(csvHeader);
         for (KieuTui kieuTui: listKieuTui){
