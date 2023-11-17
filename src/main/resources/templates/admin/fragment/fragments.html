@@ -71,12 +71,31 @@
     </th>
 
 
+    <th th:fragment="veao_link(fieldVeAo, columnLabel)">
+        <a style="text-decoration: none; color: black"
+           th:href="@{'/admin/veao/page/' + ${currentPage} + '?sortField=' + ${fieldVeAo} + '&sortDir=' + ${sortField != fieldVeAo ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
+            [[${columnLabel}]]
+        </a>
+        <span th:if="${sortField == fieldVeAo}" style="text-decoration: none; color: black"
+              th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
+    </th>
+
+
     <th th:fragment="hoatiet_link(fieldHoaTiet, columnLabel)">
         <a style="text-decoration: none; color: black"
            th:href="@{'/admin/design/page/' + ${currentPage} + '?sortField=' + ${fieldHoaTiet} + '&sortDir=' + ${sortField != fieldHoaTiet ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
             [[${columnLabel}]]
         </a>
         <span th:if="${sortField == fieldHoaTiet}" style="text-decoration: none; color: black"
+              th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
+    </th>
+
+    <th th:fragment="cautruckhuy_link(fieldCauTrucKhuy, columnLabel)">
+        <a style="text-decoration: none; color: black"
+           th:href="@{'/admin/cautruckhuy/page/' + ${currentPage} + '?sortField=' + ${fieldCauTrucKhuy} + '&sortDir=' + ${sortField != fieldCauTrucKhuy ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
+            [[${columnLabel}]]
+        </a>
+        <span th:if="${sortField == fieldCauTrucKhuy}" style="text-decoration: none; color: black"
               th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
     </th>
 
@@ -159,6 +178,15 @@
             [[${columnLabel}]]
         </a>
         <span th:if="${sortField == fieldDonHang}" style="text-decoration: none; color: black"
+              th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
+    </th>
+
+    <th th:fragment="loplot_link(fieldLopLot, columnLabel)">
+        <a style="text-decoration: none; color: black"
+           th:href="@{'/admin/loplot/page/' + ${currentPage} + '?sortField=' + ${fieldLopLot} + '&sortDir=' + ${sortField != fieldLopLot ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
+            [[${columnLabel}]]
+        </a>
+        <span th:if="${sortField == fieldLopLot}" style="text-decoration: none; color: black"
               th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
     </th>
 <!--    <th th:fragment="seri_link(fieldSeri, columnLabel)">-->

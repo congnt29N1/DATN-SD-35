@@ -1,14 +1,7 @@
 package com.example.datn.Response;
 
 
-import com.example.datn.Entity.DanhMuc;
-import com.example.datn.Entity.KichCo;
-
-
-import com.example.datn.Entity.KieuDet;
-import com.example.datn.Entity.ChatLieu;
-
-import com.example.datn.Entity.MauSac;
+import com.example.datn.Entity.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,5 +23,8 @@ public class TimKiemSettingResponse {
     private List<MauSac>listmauSac;
     private List<KieuDet>listkieuDet;
     private List<ChatLieu>listchatLieu;
+    private List<Veao>listveAo;
+    private List<LopLot>listlopLot;
+    private List<CauTrucKhuy>listcauTrucKhuy;
 
 }
