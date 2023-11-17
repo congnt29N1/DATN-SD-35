@@ -17,5 +17,5 @@ public interface VeAoRepository extends JpaRepository<VeAo,Integer> {
     @Query("SELECT va FROM VeAo va WHERE UPPER(CONCAT(va.idVeAo, ' ', va.tenVeAo, ' ', va.moTaVeAo)) LIKE %?1%")
     public Page<VeAo> findAll(String keyword, Pageable pageable);
 
-    public VeAo findByTenVeao(String ten);
+    public VeAo findByTenVeAo(String ten);
 }

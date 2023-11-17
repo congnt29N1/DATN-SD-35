@@ -25,7 +25,7 @@ public class VeAoServiceImpl implements VeAoService {
 
     @Override
     public List<VeAo> getAllPaginationVeAo() {
-        return veAoRepository.findAll(Sort.by("tenVeao").ascending());
+        return veAoRepository.findAll(Sort.by("tenVeAo").ascending());
     }
 
     @Override
@@ -56,7 +56,7 @@ public class VeAoServiceImpl implements VeAoService {
 
     @Override
     public boolean checkUnique(Integer id, String ten) {
-        VeAo veAoTheoTen = veAoRepository.findByTenVeao(ten);
+        VeAo veAoTheoTen = veAoRepository.findByTenVeAo(ten);
         if (veAoTheoTen == null) return true;
         boolean isCreatingNew = (id == null);
 

@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,9 +32,9 @@ public class DanhMucController {
     @GetMapping("/admin/categories")
     public String listFirstPage(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         return listByPage(1,model,"ten","asc",null);
     }
 
@@ -45,9 +44,9 @@ public class DanhMucController {
                              @Param("keyword")String keyword
     ){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         System.out.println("SortField: " + sortField);
         System.out.println("sortOrder: " + sortDir);
         Page<DanhMuc> page = service.listByPage(pageNum, sortField, sortDir,keyword);
@@ -81,9 +80,9 @@ public class DanhMucController {
                                              @PathVariable("status") boolean enabled,
                                              RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         service.updateDanhMucEnabledStatus(id, enabled);
         String status = enabled ? "online" : "offline";
         String message = "Danh Mục có id " + id + " thay đổi trạng thái thành " + status;
@@ -94,9 +93,9 @@ public class DanhMucController {
     @GetMapping("/admin/categories/new")
     public String newDanhMuc(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         model.addAttribute("danhMuc", new DanhMuc());
         model.addAttribute("pageTitle","Tạo Mới Danh Mục");
         return "admin/danhmuc/categories_form";
@@ -105,9 +104,9 @@ public class DanhMucController {
     @PostMapping("/admin/categories/save")
     public String saveDanhMuc(DanhMuc danhMuc, RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         service.save(danhMuc);
         redirectAttributes.addFlashAttribute("message","Thay Đổi Thành Công");
         return "redirect:/admin/categories";
@@ -119,9 +118,9 @@ public class DanhMucController {
                            RedirectAttributes redirectAttributes){
         try{
             HttpSession session = request.getSession();
-//            if(session.getAttribute("admin") == null ){
-//                return "redirect:/login-admin" ;
-//            }
+            if (session.getAttribute("admin") == null) {
+                return "redirect:/login-admin";
+            }
             DanhMuc danhMuc = service.get(id);
             model.addAttribute("danhMuc", danhMuc);
             model.addAttribute("pageTitle","Update Danh Mục (ID : " + id + ")");

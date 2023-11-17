@@ -1,7 +1,6 @@
 package com.example.datn.Controller.chitietsanpham;
 
 import com.example.datn.Entity.ChiTietSanPham;
-import com.example.datn.Entity.KhuyenMai;
 import com.example.datn.Entity.MauSac;
 import com.example.datn.Entity.SanPham;
 import com.example.datn.Exception.ChiTietSanPhamNotFountException;
@@ -38,9 +37,9 @@ public class ChiTietSanPhamController {
     @GetMapping("/admin/productDetails")
     public String listFirstPage(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         return listByPage(1,model,"maChiTietSanPham","asc",null,null);
     }
     @GetMapping("/admin/productDetails/page/{pageNum}")
@@ -49,9 +48,9 @@ public class ChiTietSanPhamController {
                               @Param("keyword") String keyword,
                               @Param("productName") String productName) {
         HttpSession session = request.getSession();
-//        if (session.getAttribute("admin") == null) {
-//            return "redirect:/login-admin";
-//        }
+        if (session.getAttribute("admin") == null) {
+            return "redirect:/login-admin";
+        }
 
         Page<ChiTietSanPham> page = chiTietSanPhamService.listByPageAndProductName(pageNum, sortField, sortDir, keyword, productName);
         List<ChiTietSanPham> listChiTietSanPham = page.getContent();
@@ -80,9 +79,9 @@ public class ChiTietSanPhamController {
     @GetMapping("/admin/productDetails/new")
     public String newProduct(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         List<SanPham> listSanPham = sanPhamService.listAll();
 //        List<KhuyenMai> listKhuyenMai = khuyenMaiService.listAll();
         List<MauSac> listMauSac = mauSacService.getAllMauSac();
@@ -96,9 +95,9 @@ public class ChiTietSanPhamController {
     @PostMapping("/admin/productDetails/save")
     public String saveProductDetails(ChiTietSanPham chiTietSanPham, RedirectAttributes ra) throws IOException {
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         List<ChiTietSanPham> list =  chiTietSanPhamService.findByIdSp(chiTietSanPham.getSanPham().getIdSanPham());
         Integer count = 0;
         for (ChiTietSanPham ctsp: list
@@ -126,9 +125,9 @@ public class ChiTietSanPhamController {
                               RedirectAttributes ra){
         try{
             HttpSession session = request.getSession();
-//            if(session.getAttribute("admin") == null ){
-//                return "redirect:/login-admin" ;
-//            }
+            if(session.getAttribute("admin") == null ){
+                return "redirect:/login-admin" ;
+            }
             ChiTietSanPham chiTietSanPham = chiTietSanPhamService.get(id);
             List<SanPham> listSanPham = sanPhamService.listAll();
             List<MauSac> listMauSac = mauSacService.getAllMauSac();
@@ -146,9 +145,9 @@ public class ChiTietSanPhamController {
     @PostMapping("/admin/productDetails/update")
     public String updateProductDetails(ChiTietSanPham chiTietSanPham, RedirectAttributes ra) throws IOException, ChiTietSanPhamNotFountException {
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if (session.getAttribute("admin") == null) {
+            return "redirect:/login-admin";
+        }
         List<ChiTietSanPham> list =  chiTietSanPhamService.findByIdSp(chiTietSanPham.getSanPham().getIdSanPham());
         Integer count = 0;
         for (ChiTietSanPham ctsp: list

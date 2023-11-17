@@ -31,10 +31,10 @@ public class VeAoController {
     @GetMapping("/admin/veao")
     public String listFirstPage(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
-        return listByPage(1,model,"tenVeao","asc",null);
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
+        return listByPage(1,model,"tenVeAo","asc",null);
     }
 
     @GetMapping("/admin/veao/page/{pageNum}")
@@ -42,9 +42,9 @@ public class VeAoController {
                               @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                               @Param("keyword") String keyword){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
 
         Page<VeAo> page = veAoService.listByPage(pageNum,sortField,sortDir,keyword);
         List<VeAo> listVeAo = page.getContent();
@@ -73,9 +73,9 @@ public class VeAoController {
                                              @PathVariable("status")boolean enabled,
                                              RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         veAoService.updateVeAoEnabledStatus(id,enabled);
         String status = enabled ? "online" : "offline";
         String message = "Ve áo có id " + id + " thay đổi trạng thái thành " + status;
@@ -86,9 +86,9 @@ public class VeAoController {
     @GetMapping("/admin/veao/new")
     public String newVatLieu(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         model.addAttribute("veAo",new VeAo());
         model.addAttribute("pageTitle","Tạo Mới ve áo");
         return "admin/veao/veao_form";
@@ -97,9 +97,9 @@ public class VeAoController {
     @PostMapping("/admin/veao/save")
     public String saveVatLieu(VeAo veao, RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         veAoService.save(veao);
         redirectAttributes.addFlashAttribute("message","Thay Đổi Thành Công");
         return "redirect:/admin/veao";
@@ -112,9 +112,9 @@ public class VeAoController {
 
         try {
             HttpSession session = request.getSession();
-//            if(session.getAttribute("admin") == null ){
-//                return "redirect:/login-admin" ;
-//            }
+            if (session.getAttribute("admin") == null) {
+                return "redirect:/login-admin";
+            }
             VeAo veao = veAoService.get(id);
             model.addAttribute("veAo", veao);
             model.addAttribute("pageTitle", "Update Ve áo(ID: " + id + ")");

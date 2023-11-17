@@ -41,9 +41,9 @@
                     <table class="table table-bordered table-striped table-hover table-responsive-xl">
                         <thead class="thead-dark">
                         <tr>
-                            <th th:replace="admin/fragment/fragments::veao_link('idVeao', 'ID')"></th>
-                            <th th:replace="admin/fragment/fragments::veao_link('tenVeao', 'Tên')"></th>
-                            <th th:replace="admin/fragment/fragments::veao_link('moTaVeao', 'Mô Tả')"></th>
+                            <th th:replace="admin/fragment/fragments::veao_link('idVeAo', 'ID')"></th>
+                            <th th:replace="admin/fragment/fragments::veao_link('tenVeAo', 'Tên')"></th>
+                            <th th:replace="admin/fragment/fragments::veao_link('moTaVeAo', 'Mô Tả')"></th>
                             <th th:replace="admin/fragment/fragments::veao_link('enabled', 'Enabled')"></th>
                             <Th>Action</Th>
 
@@ -51,13 +51,13 @@
                         </thead>
                         <tbody>
                         <tr th:each="va :${listVeAo}">
-                            <td>[[${va.idVeao}]]</td>
-                            <td>[[${va.tenVeao}]]</td>
-                            <td>[[${va.moTaVeao}]]</td>
+                            <td>[[${va.idVeAo}]]</td>
+                            <td>[[${va.tenVeAo}]]</td>
+                            <td>[[${va.moTaVeAo}]]</td>
                             <td>[[${va.enabled}]]</td>
 
                             <td>
-                                <a class="icon-green" style="text-decoration: none" th:href="@{'/admin/veao/edit/' + ${va.idVeao}}"
+                                <a class="icon-green" style="text-decoration: none" th:href="@{'/admin/veao/edit/' + ${va.idVeAo}}"
                                    title="Thay đổi thông tin"><i style="color: blue" class="fas fa-edit"></i></a>
                             </td>
                         </tr>

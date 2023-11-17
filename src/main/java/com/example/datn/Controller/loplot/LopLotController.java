@@ -31,9 +31,9 @@ public class LopLotController {
     @GetMapping("/admin/loplot")
     public String listFirstPage(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         return listByPage(1,model,"tenLopLot","asc",null);
     }
 
@@ -42,9 +42,9 @@ public class LopLotController {
                               @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                               @Param("keyword") String keyword){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
 
         Page<LopLot> page = lopLotService.listByPage(pageNum,sortField,sortDir,keyword);
         List<LopLot> listLopLot = page.getContent();
@@ -73,9 +73,9 @@ public class LopLotController {
                                              @PathVariable("status")boolean enabled,
                                              RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         lopLotService.updateLopLotEnabledStatus(id,enabled);
         String status = enabled ? "online" : "offline";
         String message = "Lớp lót có id " + id + " thay đổi trạng thái thành " + status;
@@ -86,9 +86,9 @@ public class LopLotController {
     @GetMapping("/admin/loplot/new")
     public String newVatLieu(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if (session.getAttribute("admin") == null) {
+            return "redirect:/login-admin";
+        }
         model.addAttribute("lopLot",new LopLot());
         model.addAttribute("pageTitle","Tạo Mới Lớp lót");
         return "admin/loplot/loplot_form";
