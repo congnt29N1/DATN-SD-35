@@ -18,5 +18,6 @@ public class TimKiemSettingResponse {
     private List<KichCo> listKichCo;
     private List<KieuDet>listkieuDet;
     private List<ChatLieu>listchatLieu;
+    private List<LopLot>listlopLot;
     private List<CauTrucKhuy>listcauTrucKhuy;
 }
