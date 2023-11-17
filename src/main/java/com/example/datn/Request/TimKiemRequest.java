@@ -22,4 +22,6 @@ public class TimKiemRequest {
     private List<Integer> kieuDetId;
     @JsonProperty("chatlieuId")
     private List<Integer> chatlieuId;
+    @JsonProperty("cahtruckhuyId")
+    private List<Integer> cahtruckhuyId;
 }
