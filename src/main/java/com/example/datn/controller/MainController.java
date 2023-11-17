@@ -60,6 +60,7 @@ public class MainController {
             NhanVien userEntity = nhanVienRepository.getNhanVienByEmail(loginAdminRequest.getEmail());
 
             if (passwordEncoder.matches(loginAdminRequest.getPassword(),userEntity.getMatKhau())){
+//            if (userEntity.getMatKhau().equals(loginAdminRequest.getPassword())){
                 session.setAttribute("admin",userEntity);
                 ModelAndView modelAndView = new ModelAndView("redirect:/admin");
                 return modelAndView;
