@@ -6,7 +6,6 @@
 
 <div th:fragment="navbar">
     <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background: rgb(20, 33, 62);color: white;">
-        <a class="navbar-brand ps-3" th:href="@{/admin}"><img src="static/images/logo.png" alt=""></a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -53,22 +52,27 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         Màu sắc
                     </a>
-                    <a class="nav-link collapsed" th:href="@{/admin/design}">
+                    <a class="nav-link collapsed" id="" th:href="@{/admin/design}">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Họa tiết
+                        Họa tiết</a>
 
                     <a class="nav-link collapsed" id="xeta" th:href="@{/admin/xeta}">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Xẻ tà
+                        Xẻ tà</a>
                     <a class="nav-link collapsed" id="kieudet" th:href="@{/admin/kieudet}">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Kiểu dệt
+                        Kiểu dệt</a>
                     <a class="nav-link collapsed" id="chatlieu" th:href="@{/admin/chatlieu}">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Chất Liệu
+                        Chất Liệu</a>
                     <a class="nav-link collapsed" id="kieutui" th:href="@{/admin/kieutui}">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                       kiểu túi
+
+                    </a>
+                    <a class="nav-link collapsed" id="size" th:href="@{/admin/sizes}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        kích cỡ
 
                     </a>
                 </div>

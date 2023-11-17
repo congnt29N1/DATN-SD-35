@@ -1,4 +1,4 @@
-package com.example.datn.Controller.kichco;
+package com.example.datn.Controller.KichCo;
 
 import com.example.datn.Entity.KichCo;
 import com.example.datn.Exception.KichCoNotFoundException;
@@ -27,6 +27,7 @@ public class KichCoController {
     private KichCoService service;
     @Autowired
     HttpServletRequest request;
+
     @GetMapping("/admin/sizes")
     public String listFirstPage(Model model){
         HttpSession session = request.getSession();
@@ -38,7 +39,7 @@ public class KichCoController {
 
     @GetMapping("/admin/sizes/page/{pageNum}")
     private String listByPage(@PathVariable(name = "pageNum") int pageNum, Model model,
-                              @Param("sortField") String sortField, @Param("sortDir") String sortDir,
+                              @Param("sortField") String sortField,@Param("sortDir") String sortDir,
                               @Param("keyword") String keyword){
         HttpSession session = request.getSession();
 //        if(session.getAttribute("admin") == null ){
@@ -69,8 +70,8 @@ public class KichCoController {
 
     @GetMapping("/admin/sizes/{id}/enabled/{status}")
     public String updateKichCoEnabledStatus(@PathVariable("id") Integer id,
-                                            @PathVariable("status")boolean enabled,
-                                            RedirectAttributes redirectAttributes){
+                                             @PathVariable("status")boolean enabled,
+                                             RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
 //        if(session.getAttribute("admin") == null ){
 //            return "redirect:/login-admin" ;
@@ -106,8 +107,8 @@ public class KichCoController {
 
     @GetMapping("/admin/sizes/edit/{id}")
     public String editKichCo(@PathVariable(name = "id") Integer id,
-                             Model model,
-                             RedirectAttributes redirectAttributes){
+                              Model model,
+                              RedirectAttributes redirectAttributes){
         try {
             HttpSession session = request.getSession();
 //            if(session.getAttribute("admin") == null ){
