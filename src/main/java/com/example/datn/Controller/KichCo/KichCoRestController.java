@@ -1,4 +1,4 @@
-package com.example.datn.Controller.kichco;
+package com.example.datn.Controller.KichCo;
 
 import com.example.datn.Service.KichCoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class KichCoRestController {
     @Autowired
-    KichCoService kichCoService;
+    private KichCoService service;
     @Autowired
     HttpServletRequest request;
 
     @PostMapping("/admin/sizes/check_name")
     public String checkDuplicateTen(@Param("id") Integer id , @Param("ten") String ten) {
-        return kichCoService.checkUnique(id, ten) ? "OK" : "Duplicated";
+        return service.checkUnique(id, ten) ? "OK" : "Duplicated";
     }
 }
