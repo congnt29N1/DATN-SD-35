@@ -7,6 +7,8 @@ import com.example.datn.Response.SanPhamAdminResponse;
 import com.example.datn.Response.TimKiemSettingResponse;
 import com.example.datn.Service.ChiTietSanPhamService;
 import com.example.datn.Service.DanhmucService;
+import com.example.datn.Service.KhuyenMaiService;
+import com.example.datn.Service.KichCoService;
 import com.example.datn.Service.MauSacService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,7 +29,11 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     @Autowired
     DanhmucService danhmucService;
     @Autowired
+    KhuyenMaiService khuyenMaiService;
+    @Autowired
     MauSacService mauSacService;
+    @Autowired
+    KichCoService kichCoService;
     @Override
     public int totalPageSearchSP(String key, int pageNum) {
         return chiTietSanPhamRepository.searchByKey(key, PageRequest.of(pageNum - 1, 5)).getTotalPages();
@@ -56,10 +62,8 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     public TimKiemSettingResponse getTimKiemSetting() {
         TimKiemSettingResponse result = new TimKiemSettingResponse();
         result.setListDanhMuc(danhmucService.listAll());
-//        result.setListDayDeo(dayDeoService.getAllDayDeo());
-//        result.setListKichCo(kichCoService.getAllKichCo());
+        result.setListKichCo(kichCoService.getAllKichCo());
         result.setListMauSac(mauSacService.getAllMauSac());
-//        result.setListVatLieu(vatLieuService.getAllVatLieu());
         return result;
     }
 

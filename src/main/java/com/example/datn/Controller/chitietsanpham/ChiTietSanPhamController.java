@@ -1,10 +1,12 @@
 package com.example.datn.Controller.chitietsanpham;
 
 import com.example.datn.Entity.ChiTietSanPham;
+import com.example.datn.Entity.KichCo;
 import com.example.datn.Entity.MauSac;
 import com.example.datn.Entity.SanPham;
 import com.example.datn.Exception.ChiTietSanPhamNotFountException;
 import com.example.datn.Service.ChiTietSanPhamService;
+import com.example.datn.Service.KichCoService;
 import com.example.datn.Service.MauSacService;
 import com.example.datn.Service.SanPhamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,8 @@ public class ChiTietSanPhamController {
     private SanPhamService sanPhamService;
     @Autowired
     private MauSacService mauSacService;
+    @Autowired
+    private KichCoService kichCoService;
     @Autowired
     HttpServletRequest request;
 
@@ -85,11 +89,13 @@ public class ChiTietSanPhamController {
         List<SanPham> listSanPham = sanPhamService.listAll();
 //        List<KhuyenMai> listKhuyenMai = khuyenMaiService.listAll();
         List<MauSac> listMauSac = mauSacService.getAllMauSac();
+        List<KichCo> listKichCo = kichCoService.getAllKichCo();
         ChiTietSanPham chiTietSanPham = new ChiTietSanPham();
         chiTietSanPham.setTrangThai(1);
         model.addAttribute("chiTietSanPham",chiTietSanPham);
         model.addAttribute("listSanPham",listSanPham);
         model.addAttribute("listMauSac",listMauSac);
+        model.addAttribute("listKichCo",listKichCo);
         return "admin/chitietsanpham/product_detail_create";
     }
     @PostMapping("/admin/productDetails/save")

@@ -1,4 +1,4 @@
-package com.example.datn.response;
+package com.example.datn.Response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

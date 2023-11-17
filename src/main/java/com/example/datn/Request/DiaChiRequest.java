@@ -1,4 +1,4 @@
-package com.datn.dongho5s.Request;
+package com.example.datn.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

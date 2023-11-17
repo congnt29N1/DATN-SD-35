@@ -1,13 +1,13 @@
 package com.example.datn.Service.Impl;
 
-import com.datn.dongho5s.Request.DiaChiRequest;
-import com.datn.dongho5s.Response.DiaChiResponse;
 import com.example.datn.Cache.DiaChiCache;
 import com.example.datn.Entity.DiaChi;
 import com.example.datn.Entity.KhachHang;
 import com.example.datn.GiaoHangNhanhService.DiaChiAPI;
-import com.example.datn.Respository.DiaChiRespository;
-import com.example.datn.Respository.KhachHangRespository;
+import com.example.datn.Repository.DiaChiRespository;
+import com.example.datn.Repository.KhachHangRespository;
+import com.example.datn.Request.DiaChiRequest;
+import com.example.datn.Response.DiaChiResponse;
 import com.example.datn.Service.DiaChiService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

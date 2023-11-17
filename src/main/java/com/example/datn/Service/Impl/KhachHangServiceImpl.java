@@ -3,10 +3,11 @@ package com.example.datn.Service.Impl;
 import com.example.datn.Entity.DiaChi;
 import com.example.datn.Entity.KhachHang;
 import com.example.datn.Exception.CustomException.KhachHangNotFoundException;
+import com.example.datn.Repository.DiaChiRespository;
+import com.example.datn.Repository.KhachHangRespository;
 import com.example.datn.Response.ThongTinCaNhanResponse;
 import com.example.datn.Response.ThongTinToCheckoutResponse;
-import com.example.datn.Respository.DiaChiRespository;
-import com.example.datn.Respository.KhachHangRespository;
+
 import com.example.datn.Service.KhachHangService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

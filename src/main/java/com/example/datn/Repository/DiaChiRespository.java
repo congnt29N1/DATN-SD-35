@@ -1,4 +1,4 @@
-package com.example.datn.Respository;
+package com.example.datn.Repository;
 
 import com.example.datn.Entity.DiaChi;
 import com.example.datn.Entity.KhachHang;
