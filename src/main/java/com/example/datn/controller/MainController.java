@@ -1,4 +1,4 @@
-package com.example.datn.Controller;
+package com.example.datn.controller;
 
 import com.example.datn.Entity.NhanVien;
 import com.example.datn.repository.NhanVienRepository;
