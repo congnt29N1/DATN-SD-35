@@ -1,11 +1,13 @@
 package com.example.datn.Controller.chitietsanpham;
 
 import com.example.datn.Entity.ChiTietSanPham;
+import com.example.datn.Entity.KhuyenMai;
 import com.example.datn.Entity.KichCo;
 import com.example.datn.Entity.MauSac;
 import com.example.datn.Entity.SanPham;
 import com.example.datn.Exception.ChiTietSanPhamNotFountException;
 import com.example.datn.Service.ChiTietSanPhamService;
+import com.example.datn.Service.KhuyenMaiService;
 import com.example.datn.Service.KichCoService;
 import com.example.datn.Service.MauSacService;
 import com.example.datn.Service.SanPhamService;
@@ -33,6 +35,8 @@ public class ChiTietSanPhamController {
     private SanPhamService sanPhamService;
     @Autowired
     private MauSacService mauSacService;
+    @Autowired
+    private KhuyenMaiService khuyenMaiService;
     @Autowired
     private KichCoService kichCoService;
     @Autowired
@@ -87,12 +91,13 @@ public class ChiTietSanPhamController {
             return "redirect:/login-admin" ;
         }
         List<SanPham> listSanPham = sanPhamService.listAll();
-//        List<KhuyenMai> listKhuyenMai = khuyenMaiService.listAll();
+        List<KhuyenMai> listKhuyenMai = khuyenMaiService.listAll();
         List<MauSac> listMauSac = mauSacService.getAllMauSac();
         List<KichCo> listKichCo = kichCoService.getAllKichCo();
         ChiTietSanPham chiTietSanPham = new ChiTietSanPham();
         chiTietSanPham.setTrangThai(1);
         model.addAttribute("chiTietSanPham",chiTietSanPham);
+        model.addAttribute("listKhuyenMai",listKhuyenMai);
         model.addAttribute("listSanPham",listSanPham);
         model.addAttribute("listMauSac",listMauSac);
         model.addAttribute("listKichCo",listKichCo);
