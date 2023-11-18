@@ -1,7 +1,7 @@
 package com.example.datn.controller;
 
 import com.example.datn.Entity.NhanVien;
-import com.example.datn.repository.NhanVienRepository;
+import com.example.datn.Repository.NhanVienRepository;
 import com.example.datn.request.LoginAdminRequest;
 import com.example.datn.security.AccountFilterService;
 import com.example.datn.service.NhanVienService;

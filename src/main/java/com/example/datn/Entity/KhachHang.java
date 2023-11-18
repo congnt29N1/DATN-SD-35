@@ -8,6 +8,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,7 +33,7 @@ import java.util.List;
 @Builder
 @Table(name = "khachhang")
 public class KhachHang
-//        implements UserDetails
+        implements UserDetails
 {
     @Id
     @Column(name = "id_khach_hang")
@@ -75,22 +77,42 @@ public class KhachHang
     @Column(name = "enabled",nullable = false)
     private boolean enabled;
 
-//    @Override
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {
 //        List<SimpleGrantedAuthority> authorities=new ArrayList<>();
 //        authorities.add(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
 //        return  authorities;
 //    }
 //
-//    @Override
-//    public String getPassword() {
-//      return this.password;
-//    }
-//
-//    @Override
-//    public String getUsername() {
-//        return this.email;
-//    }
+    @Override
+    public String getPassword() {
+      return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
 //
 //    @Override
 //    public boolean isAccountNonExpired() {
