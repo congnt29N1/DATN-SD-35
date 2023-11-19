@@ -4,6 +4,7 @@ import com.example.datn.Cache.DiaChiCache;
 import com.example.datn.Entity.DiaChi;
 import com.example.datn.Entity.KhachHang;
 import com.example.datn.GiaoHangNhanhService.DiaChiAPI;
+import com.example.datn.Request.DiaChiRequest;
 import com.example.datn.Service.DiaChiService;
 import com.example.datn.Service.Impl.DiaChiServiceImpl;
 import lombok.AllArgsConstructor;
@@ -29,7 +30,7 @@ public class DiaChiRestController {
     }
 
     @PostMapping("/them-dia-chi/{idKhachHang}")
-    public ResponseEntity<com.datn.dongho5s.Response.DiaChiResponse> createDiaChi (@PathVariable("idKhachHang") Integer idKhachHang, @RequestBody com.datn.dongho5s.Request.DiaChiRequest diaChiRequest) throws Exception {
+    public ResponseEntity<com.datn.dongho5s.Response.DiaChiResponse> createDiaChi (@PathVariable("idKhachHang") Integer idKhachHang, @RequestBody DiaChiRequest diaChiRequest) throws Exception {
 
         com.datn.dongho5s.Response.DiaChiResponse result = diaChiServiceImpl.createDiaChi(idKhachHang,diaChiRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
@@ -66,7 +67,7 @@ public class DiaChiRestController {
     }
 
     @PutMapping("/update/{idDiaChi}")
-    public ResponseEntity<?> updateDC(@PathVariable("idDiaChi") Integer idDiaChi, @RequestBody com.datn.dongho5s.Request.DiaChiRequest diaChiRequest) throws Exception {
+    public ResponseEntity<?> updateDC(@PathVariable("idDiaChi") Integer idDiaChi, @RequestBody DiaChiRequest diaChiRequest) throws Exception {
         com.datn.dongho5s.Response.DiaChiResponse diaChiResponse = diaChiServiceImpl.updateDC(idDiaChi,diaChiRequest);
         return ResponseEntity.status(HttpStatus.OK).body(diaChiResponse);
     }

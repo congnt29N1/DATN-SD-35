@@ -1,2 +1,4 @@
-package com.example.datn.Rescontroller;public class TrangChuRestController {
+package com.example.datn.Rescontroller;
+
+public class TrangChuRestController {
 }
