@@ -1,4 +1,4 @@
-package com.example.datn.controller;
+package com.example.datn.Controller;
 
 import com.example.datn.Entity.NhanVien;
 import com.example.datn.Repository.NhanVienRepository;
@@ -60,6 +60,7 @@ public class MainController {
             NhanVien userEntity = nhanVienRepository.getNhanVienByEmail(loginAdminRequest.getEmail());
 
             if (passwordEncoder.matches(loginAdminRequest.getPassword(),userEntity.getMatKhau())){
+//            if (userEntity.getMatKhau().equals(loginAdminRequest.getPassword())){
                 session.setAttribute("admin",userEntity);
                 ModelAndView modelAndView = new ModelAndView("redirect:/admin");
                 return modelAndView;

@@ -30,9 +30,9 @@ public class MauSacController {
     @GetMapping
     public String listFirstPage(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         return listByPage(1,model,"tenMauSac","asc",null);
     }
 
@@ -42,9 +42,9 @@ public class MauSacController {
                              @Param("keyword")String keyword
     ){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         Page<MauSac> page = mauSacService.listByPage(pageNum, sortField, sortDir,keyword);
         List<MauSac> listMauSac = page.getContent();
 
@@ -75,9 +75,9 @@ public class MauSacController {
                                             @PathVariable("status") boolean enabled,
                                             RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         mauSacService.updateMauSacEnabledStatus(id, enabled);
         String status = enabled ? "online" : "offline";
         String message = "Màu sắc có id " + id + " thay đổi trạng thái thành " + status;
@@ -88,9 +88,9 @@ public class MauSacController {
     @GetMapping("/new")
     public String newDanhMuc(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         model.addAttribute("mauSac", new MauSac());
         model.addAttribute("pageTitle","Tạo mới");
         return "admin/mausac/colors_form";
@@ -99,9 +99,9 @@ public class MauSacController {
     @PostMapping("/save")
     public String saveDanhMuc(MauSac mauSac, RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         mauSacService.save(mauSac);
         redirectAttributes.addFlashAttribute("message","Thay Đổi Thành Công");
         return "redirect:/admin/colors";
@@ -114,9 +114,9 @@ public class MauSacController {
 
         try{
             HttpSession session = request.getSession();
-//            if(session.getAttribute("admin") == null ){
-//                return "redirect:/login-admin" ;
-//            }
+            if(session.getAttribute("admin") == null ){
+                return "redirect:/login-admin" ;
+            }
             MauSac mauSac = mauSacService.get(id);
             model.addAttribute("mauSac", mauSac);
             model.addAttribute("pageTitle","Cập nhật");

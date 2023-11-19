@@ -31,9 +31,9 @@ public class KieuDetController {
     @GetMapping("/admin/kieudet")
     public String listFirstPage(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         return listByPage(1,model,"tenKieuDet","asc",null);
     }
 
@@ -42,9 +42,9 @@ public class KieuDetController {
                               @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                               @Param("keyword") String keyword){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
 
         Page<KieuDet> page = kieuDetService.listByPage(pageNum,sortField,sortDir,keyword);
         List<KieuDet> listKieuDet = page.getContent();
@@ -73,9 +73,9 @@ public class KieuDetController {
                                              @PathVariable("status")boolean enabled,
                                              RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         kieuDetService.updateKieuDetEnabledStatus(id,enabled);
         String status = enabled ? "online" : "offline";
         String message = "Vật liệu có id " + id + " thay đổi trạng thái thành " + status;
@@ -86,9 +86,9 @@ public class KieuDetController {
     @GetMapping("/admin/kieudet/new")
     public String newVatLieu(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         model.addAttribute("kieuDet",new KieuDet());
         model.addAttribute("pageTitle","Tạo Mới kiểu dệt");
         return "admin/kieudet/kieudet_form";
@@ -97,9 +97,9 @@ public class KieuDetController {
     @PostMapping("/admin/kieudet/save")
     public String saveVatLieu(KieuDet kieuDet, RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         kieuDetService.save(kieuDet);
         redirectAttributes.addFlashAttribute("message","Thay Đổi Thành Công");
         return "redirect:/admin/kieudet";
@@ -112,9 +112,9 @@ public class KieuDetController {
 
         try {
             HttpSession session = request.getSession();
-//            if(session.getAttribute("admin") == null ){
-//                return "redirect:/login-admin" ;
-//            }
+            if(session.getAttribute("admin") == null) {
+                return "redirect:/login-admin";
+            }
             KieuDet kieuDet = kieuDetService.get(id);
             model.addAttribute("kieuDet", kieuDet);
             model.addAttribute("pageTitle", "Update Kiểu dệt (ID: " + id + ")");

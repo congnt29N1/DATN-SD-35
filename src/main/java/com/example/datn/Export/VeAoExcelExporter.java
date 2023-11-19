@@ -1,7 +1,11 @@
 package com.example.datn.Export;
 
-import com.example.datn.Entity.Veao;
-import org.apache.poi.ss.usermodel.*;
+import com.example.datn.Entity.VeAo;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.servlet.ServletOutputStream;
@@ -50,7 +54,7 @@ public class VeAoExcelExporter extends AbstractExporter{
         }
     }
 
-    public void export(List<Veao> listVeao, HttpServletResponse response) throws IOException {
+    public void export(List<VeAo> listVeao, HttpServletResponse response) throws IOException {
         super.setResponseHeader(response, "application/octet-stream", ".xlsx","material_");
 
         writeHeaderLine();
@@ -62,7 +66,7 @@ public class VeAoExcelExporter extends AbstractExporter{
         outputStream.close();
     }
 
-    private void writeDataLines(List<Veao> listVeao) {
+    private void writeDataLines(List<VeAo> listVeao) {
         int rowIndex = 1;
 
         CellStyle cellStyle = workbook.createCellStyle();
@@ -70,12 +74,12 @@ public class VeAoExcelExporter extends AbstractExporter{
         font.setFontHeightInPoints((short) 14);
         cellStyle.setFont(font);
 
-        for (Veao veao : listVeao) {
+        for (VeAo veao : listVeao) {
             Row row = sheet.createRow(rowIndex++);
             int columnIndex = 0;
-            createCell(row, columnIndex++, veao.getIdVeao(), cellStyle);
-            createCell(row, columnIndex++, veao.getTenVeao(), cellStyle);
-            createCell(row, columnIndex++, veao.getMoTaVeao(), cellStyle);
+            createCell(row, columnIndex++, veao.getIdVeAo(), cellStyle);
+            createCell(row, columnIndex++, veao.getTenVeAo(), cellStyle);
+            createCell(row, columnIndex++, veao.getMoTaVeAo(), cellStyle);
             createCell(row, columnIndex++, veao.isEnabled(), cellStyle);
 
         }

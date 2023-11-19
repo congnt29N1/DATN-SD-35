@@ -5,6 +5,8 @@ import com.example.datn.Entity.DiaChi;
 import com.example.datn.Entity.KhachHang;
 import com.example.datn.GiaoHangNhanhService.DiaChiAPI;
 import com.example.datn.Request.DiaChiRequest;
+import com.example.datn.Response.DiaChiResponse;
+
 import com.example.datn.Service.DiaChiService;
 import com.example.datn.Service.Impl.DiaChiServiceImpl;
 import lombok.AllArgsConstructor;
@@ -25,14 +27,14 @@ public class DiaChiRestController {
 
     @GetMapping("/find-all/{idKhachHang}")
     public ResponseEntity<?> getAllDiaChi(@PathVariable("idKhachHang") Integer idKhachHang) throws Exception {
-        List<com.datn.dongho5s.Response.DiaChiResponse> lstDiaChiResponse = diaChiServiceImpl.getDiaChiByKhachHang(idKhachHang);
+        List<DiaChiResponse> lstDiaChiResponse = diaChiServiceImpl.getDiaChiByKhachHang(idKhachHang);
         return ResponseEntity.status(HttpStatus.OK).body(lstDiaChiResponse);
     }
 
     @PostMapping("/them-dia-chi/{idKhachHang}")
-    public ResponseEntity<com.datn.dongho5s.Response.DiaChiResponse> createDiaChi (@PathVariable("idKhachHang") Integer idKhachHang, @RequestBody DiaChiRequest diaChiRequest) throws Exception {
+    public ResponseEntity<DiaChiResponse> createDiaChi (@PathVariable("idKhachHang") Integer idKhachHang, @RequestBody DiaChiRequest diaChiRequest) throws Exception {
 
-        com.datn.dongho5s.Response.DiaChiResponse result = diaChiServiceImpl.createDiaChi(idKhachHang,diaChiRequest);
+        DiaChiResponse result = diaChiServiceImpl.createDiaChi(idKhachHang,diaChiRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 
@@ -68,12 +70,13 @@ public class DiaChiRestController {
 
     @PutMapping("/update/{idDiaChi}")
     public ResponseEntity<?> updateDC(@PathVariable("idDiaChi") Integer idDiaChi, @RequestBody DiaChiRequest diaChiRequest) throws Exception {
-        com.datn.dongho5s.Response.DiaChiResponse diaChiResponse = diaChiServiceImpl.updateDC(idDiaChi,diaChiRequest);
+        DiaChiResponse diaChiResponse = diaChiServiceImpl.updateDC(idDiaChi,diaChiRequest);
+
         return ResponseEntity.status(HttpStatus.OK).body(diaChiResponse);
     }
     @PutMapping("/updateDefault/{idKhachHang}/{idDiaChi}")
     public ResponseEntity<?> updateDC(@PathVariable("idKhachHang") Integer idKhachHang,@PathVariable("idDiaChi") Integer idDiaCh) throws Exception {
-        com.datn.dongho5s.Response.DiaChiResponse diaChiResponse = diaChiServiceImpl.updateDCDefault(idKhachHang,idDiaCh);
+        DiaChiResponse diaChiResponse = diaChiServiceImpl.updateDCDefault(idKhachHang,idDiaCh);
         return ResponseEntity.status(HttpStatus.OK).body(diaChiResponse);
     }
     @DeleteMapping("/delete/{idDiaChi}")

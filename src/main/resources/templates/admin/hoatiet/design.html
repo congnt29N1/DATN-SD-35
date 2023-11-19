@@ -71,13 +71,6 @@
                 </table>
             </div>
 
-            <!--    <div class="text-center m-1" th:if="${totalItem > 0}">-->
-            <!--        <span>Hiển thị Danh Mục # [[${startCount}]] to [[${endCount}]] of [[${totalItem}]] </span>-->
-            <!--    </div>-->
-            <!--    <div class="text-center m-1" th:unless="${totalItem > 0}">-->
-            <!--        <span>Không có Danh Mục trang này</span>-->
-            <!--    </div>-->
-
             <div th:if="${totalPages > 1}">
                 <nav>
                     <ul class="pagination justify-content-center">
@@ -103,7 +96,6 @@
             </div>
 
         </main>
-        <!--        <div th:replace="admin/fragment/fragments::footer"></div>-->
     </div>
 </div>
 </body>

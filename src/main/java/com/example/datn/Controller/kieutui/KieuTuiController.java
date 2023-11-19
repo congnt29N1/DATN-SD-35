@@ -31,9 +31,9 @@ public class KieuTuiController {
     @GetMapping("/admin/kieutui")
     public String listFirstPage(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         return listByPage(1,model,"tenKieuTui","asc",null);
     }
     @GetMapping("/admin/kieutui/page/{pageNum}")
@@ -41,9 +41,9 @@ public class KieuTuiController {
                               @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                               @Param("keyword") String keyword){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
 
         Page<KieuTui> page = kieuTuiService.listByPage(pageNum,sortField,sortDir,keyword);
         List<KieuTui> listKieuTui = page.getContent();
@@ -71,9 +71,9 @@ public class KieuTuiController {
                                              @PathVariable("status")boolean enabled,
                                              RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         kieuTuiService.updateKieuTuiEnabledStatus(id,enabled);
         String status = enabled ? "online" : "offline";
         String message = "Kiểu túi có id " + id + " thay đổi trạng thái thành " + status;
@@ -84,9 +84,9 @@ public class KieuTuiController {
     @GetMapping("/admin/kieutui/new")
     public String newVatLieu(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         model.addAttribute("kieuTui",new KieuTui());
         model.addAttribute("pageTitle","Tạo Mới kiểu túi");
         return "admin/kieutui/kieutui_form";
@@ -95,9 +95,9 @@ public class KieuTuiController {
     @PostMapping("/admin/kieutui/save")
     public String saveVatLieu(KieuTui kieuTui, RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         kieuTuiService.save(kieuTui);
         redirectAttributes.addFlashAttribute("message","Thay Đổi Thành Công");
         return "redirect:/admin/kieutui";
@@ -110,9 +110,9 @@ public class KieuTuiController {
 
         try {
             HttpSession session = request.getSession();
-//            if(session.getAttribute("admin") == null ){
-//                return "redirect:/login-admin" ;
-//            }
+            if(session.getAttribute("admin") == null) {
+                return "redirect:/login-admin";
+            }
             KieuTui kieuTui = kieuTuiService.get(id);
             model.addAttribute("kieuTui", kieuTui);
             model.addAttribute("pageTitle", "Update kiểu túi (ID: " + id + ")");

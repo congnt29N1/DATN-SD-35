@@ -19,7 +19,7 @@ import java.io.IOException;
 @AllArgsConstructor
 @Component
 public class AccounFilter extends OncePerRequestFilter {
-    private final AccountFilterService accountFilterService;
+    private final com.example.datn.security.AccountFilterService accountFilterService;
     private final UserDetailsService userDetailsService;
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {

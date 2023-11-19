@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,9 +29,9 @@ public class ChatLieuController {
     @GetMapping("/admin/chatlieu")
     public String listFirstPage(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         return listByPage(1,model,"tenChatLieu","asc",null);
     }
 
@@ -39,9 +40,9 @@ public class ChatLieuController {
                               @Param("sortField") String sortField, @Param("sortDir") String sortDir,
                               @Param("keyword") String keyword){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
 
         Page<ChatLieu> page = chatLieuService.listByPage(pageNum,sortField,sortDir,keyword);
         List<ChatLieu> listChatLieu = page.getContent();
@@ -70,9 +71,9 @@ public class ChatLieuController {
                                              @PathVariable("status")boolean enabled,
                                              RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         chatLieuService.updateChatLieuEnabledStatus(id,enabled);
         String status = enabled ? "online" : "offline";
         String message = "Chất liệu có id " + id + " thay đổi trạng thái thành " + status;
@@ -83,9 +84,9 @@ public class ChatLieuController {
     @GetMapping("/admin/chatlieu/new")
     public String newChatLieu(Model model){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         model.addAttribute("chatLieu",new ChatLieu());
         model.addAttribute("pageTitle","Tạo Mới Chất Liệu");
         return "admin/chatlieu/chatlieu_form";
@@ -94,9 +95,9 @@ public class ChatLieuController {
     @PostMapping("/admin/chatlieu/save")
     public String saveChatLieu(ChatLieu chatLieu, RedirectAttributes redirectAttributes){
         HttpSession session = request.getSession();
-//        if(session.getAttribute("admin") == null ){
-//            return "redirect:/login-admin" ;
-//        }
+        if(session.getAttribute("admin") == null ){
+            return "redirect:/login-admin" ;
+        }
         chatLieuService.save(chatLieu);
         redirectAttributes.addFlashAttribute("message","Thay Đổi Thành Công");
         return "redirect:/admin/chatlieu";
@@ -109,9 +110,9 @@ public class ChatLieuController {
 
         try {
             HttpSession session = request.getSession();
-//            if(session.getAttribute("admin") == null ){
-//                return "redirect:/login-admin" ;
-//            }
+            if (session.getAttribute("admin") == null) {
+                return "redirect:/login-admin";
+            }
             ChatLieu chatLieu = chatLieuService.get(id);
             model.addAttribute("chatLieu", chatLieu);
             model.addAttribute("pageTitle", "Update Chất Liệu (ID: " + id + ")");

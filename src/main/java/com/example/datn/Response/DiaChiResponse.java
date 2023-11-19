@@ -1,4 +1,4 @@
-package com.datn.dongho5s.Response;
+package com.example.datn.Response;
 
 import com.example.datn.Entity.KhachHang;
 import lombok.AllArgsConstructor;

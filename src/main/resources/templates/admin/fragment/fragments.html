@@ -13,19 +13,17 @@
     <link th:href="@{https://use.fontawesome.com/releases/v6.3.0/css/all.css}" crossorigin="anonymous">
     <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
     <script th:src="@{https://use.fontawesome.com/releases/v6.3.0/js/all.js}" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdn.jquery.com/jquery-3.7.0.js}" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js}" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js}" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css}" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css}" crossorigin="anonymous"></script>
     <script th:src="@{/js/scripts.js}"></script>
     <script th:src="@{/js/index_form.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script th:src="@{/js/datatables-simple-demo.js}"></script>
 </head>
 <body>
-
-    <!--fragment cho footer-->
-    <div th:fragment="footer" class="text-center m-3">
-        <p>5S Watch Control Pannel - copyright &copy; 5S</p>
-    </div>
-
-
     <!-- fragment cho navigation-->
     <th th:fragment="column_link(fieldName, columnLabel)">
         <a style="text-decoration: none; color: black"
@@ -140,15 +138,6 @@
               th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
     </th>
 
-<!--    <th th:fragment="vatlieu_link(fieldVatLieu, columnLabel)">-->
-<!--        <a style="text-decoration: none; color: black"-->
-<!--           th:href="@{'/admin/materials/page/' + ${currentPage} + '?sortField=' + ${fieldVatLieu} + '&sortDir=' + ${sortField != fieldVatLieu ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">-->
-<!--            [[${columnLabel}]]-->
-<!--        </a>-->
-<!--        <span th:if="${sortField == fieldVatLieu}" style="text-decoration: none; color: black"-->
-<!--              th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>-->
-<!--    </th>-->
-
     <th th:fragment="kichco_link(fieldKichCo, columnLabel)">
         <a style="text-decoration: none; color: black"
            th:href="@{'/admin/sizes/page/' + ${currentPage} + '?sortField=' + ${fieldKichCo} + '&sortDir=' + ${sortField != fieldKichCo ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">
@@ -184,14 +173,6 @@
         <span th:if="${sortField == fieldLopLot}" style="text-decoration: none; color: black"
               th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
     </th>
-<!--    <th th:fragment="seri_link(fieldSeri, columnLabel)">-->
-<!--        <a style="text-decoration: none; color: black"-->
-<!--           th:href="@{'/admin/series/page/' + ${currentPage} + '?sortField=' + ${fieldSeri} + '&sortDir=' + ${sortField != fieldSeri ? sortDir : reverseSortDir} + ${keyword !=null ? '&keyword=' + keyword:''}}">-->
-<!--            [[${columnLabel}]]-->
-<!--        </a>-->
-<!--        <span th:if="${sortField == fieldSeri}" style="text-decoration: none; color: black"-->
-<!--              th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>-->
-<!--    </th>-->
     <!-- fragment cho phân trang-->
 
     <a th:fragment="page_spct_link(pageNum, label)"

@@ -74,10 +74,14 @@ public class ChiTietSanPham {
     private LopLot lopLot;
     @ManyToOne
     @JoinColumn(name = "id_ve_ao")
-    private Veao veAo;
+    private VeAo veAo;
     @ManyToOne
     @JoinColumn(name = "id_xe_ta")
     private XeTa xeTa;
+    @Column(name = "so_mi_phu_hop")
+    private String soMiPhuHop;
+    @Column(name = "giay_phu_hop")
+    private String giayPhuHop;
     @Column(name = "so_luong")
     private Integer soLuong;
     @Column(name = "gia_san_pham")

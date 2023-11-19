@@ -1,6 +1,6 @@
 package com.example.datn.Service.Impl;
 
-import com.example.datn.Entity.Veao;
+import com.example.datn.Entity.VeAo;
 import com.example.datn.Exception.VeAoNotFoundException;
 import com.example.datn.Repository.VeAoRepository;
 import com.example.datn.Service.VeAoService;
@@ -19,17 +19,17 @@ public class VeAoServiceImpl implements VeAoService {
     VeAoRepository veAoRepository;
 
     @Override
-    public List<Veao> getAllVeAo() {
+    public List<VeAo> getAllVeAo() {
         return veAoRepository.findAll();
     }
 
     @Override
-    public List<Veao> getAllPaginationVeAo() {
-        return veAoRepository.findAll(Sort.by("tenVeao").ascending());
+    public List<VeAo> getAllPaginationVeAo() {
+        return veAoRepository.findAll(Sort.by("tenVeAo").ascending());
     }
 
     @Override
-    public Page<Veao> listByPage(int pageNumber, String sortField, String sortDir, String keyword) {
+    public Page<VeAo> listByPage(int pageNumber, String sortField, String sortDir, String keyword) {
         Sort sort = Sort.by(sortField);
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
         Pageable pageable = PageRequest.of(pageNumber - 1 , MATERIALS_PER_PAGE, sort);
@@ -40,12 +40,12 @@ public class VeAoServiceImpl implements VeAoService {
     }
 
     @Override
-    public Veao save(Veao veao) {
+    public VeAo save(VeAo veao) {
         return veAoRepository.save(veao);
     }
 
     @Override
-    public Veao get(Integer id) throws VeAoNotFoundException, Exception {
+    public VeAo get(Integer id) throws VeAoNotFoundException, Exception {
         try {
             return veAoRepository.findById(id)
                     .orElseThrow(() -> new VeAoNotFoundException("Không tìm thấy ve áo nào theo ID: " + id));
@@ -56,7 +56,7 @@ public class VeAoServiceImpl implements VeAoService {
 
     @Override
     public boolean checkUnique(Integer id, String ten) {
-        Veao veAoTheoTen = veAoRepository.findByTenVeao(ten);
+        VeAo veAoTheoTen = veAoRepository.findByTenVeAo(ten);
         if (veAoTheoTen == null) return true;
         boolean isCreatingNew = (id == null);
 
@@ -66,7 +66,7 @@ public class VeAoServiceImpl implements VeAoService {
                 return false;
             }
         }else {
-            if (veAoTheoTen.getIdVeao() != id) {
+            if (veAoTheoTen.getIdVeAo() != id) {
                 return false;
             }
         }
