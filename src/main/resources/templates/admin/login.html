@@ -11,14 +11,72 @@
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/js/scripts.js}"></script>
     <script th:src="@{/js/datatables-simple-demo.js}"></script>
+    <style>
+        html, body{
+            width: 100%;
+            margin: 0; /* Add this to remove default margin */
+            padding: 0; /* Add this to remove default padding */
+            overflow: hidden; /* Add this to prevent scroll bars */
+        }
+        body {
+            background-image: url('/images/background_login.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .box{
+            text-align: center;
+            background: #181818;
+            width: 400px;
+            height: auto;
+            padding: 25px;
+            position: absolute;
+            left: 50%; top:50%;
+            transform: translate(-50%,-50%);
+            box-shadow: 0px 0px 20px 0px #000;
+        }
+        .box h1{
+            color: #fff;
+        }
+        .box input[type="password"], .box input[type="email"]{
+            background: none;
+            outline: none;
+            width: 350px;
+            height: 40px;
+            border-radius: 40px;
+            padding: 0px 15px;
+            margin: 15px 0px;
+            border: solid 2px #002cff;
+            transition: 1s;
+        }
+        .box input[type="password"]:focus, .box input[type="email"]:focus{
+            width: 320px;
+            border-color: chartreuse;
+            transition: 1s;
+        }
+        .box input[type="submit"]{
+            background: none;
+            outline: none;
+            width: 160px;
+            height: 40px;
+            border-radius: 40px;
+            margin: 15px 0px;
+            border: solid 2px #002cff;
+            color: #fff;
+            font-size: 18px;
+            transition: 1s;
+        }
+        .box input[type="submit"]:hover{
+            background: #002cff;
+            transition: 1s;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid text-center">
 
-    <div>
-        <img style="margin-top: 20px" th:src="@{/images/5SAdminBig.png}">
-    </div>
-    <form th:action="@{/post/login}" method="post" style="max-width: 350px; margin: 0 auto">
+
+    <form th:action="@{/post/login}" method="post"  class="box">
         <div th:if="${error}" class="text-danger">
             [[${error}]]
         </div>
@@ -31,27 +89,13 @@
             <p class="text-warning">Bạn Đã Đăng Xuất</p>
 
         </div>
-        <div class="border border-secondary rounded p-3">
-            <p>Đăng Nhập với 5SWatch Admin</p>
-            <p>
-                <input type="email" name="email" placeholder="email" class="form-control" required/>
-            </p>
-            <p>
-                <input type="password" name="password" placeholder="password" class="form-control" required/>
-            </p>
 
-
-            <p>
-                <input type="submit" value="login" class="btn btn-primary" />
-            </p>
-        </div>
+        <H1>Đăng nhập ngay</H1>
+        <input type="email" name="email" placeholder="Email" class="form-control" required/>
+        <input type="password" name="password" placeholder="Password" class="form-control" required/>
+        <input type="submit" value="login" class="btn btn-primary" />
 
     </form>
-
-    <div class="text-center">
-        <p>5S Watch Control Pannel - copyright &copy; 5S</p>
-    </div>
-
 </div>
 
 
