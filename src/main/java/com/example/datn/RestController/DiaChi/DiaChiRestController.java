@@ -6,6 +6,7 @@ import com.example.datn.Entity.KhachHang;
 import com.example.datn.GiaoHangNhanhService.DiaChiAPI;
 import com.example.datn.Request.DiaChiRequest;
 import com.example.datn.Response.DiaChiResponse;
+
 import com.example.datn.Service.DiaChiService;
 import com.example.datn.Service.Impl.DiaChiServiceImpl;
 import lombok.AllArgsConstructor;
@@ -70,6 +71,7 @@ public class DiaChiRestController {
     @PutMapping("/update/{idDiaChi}")
     public ResponseEntity<?> updateDC(@PathVariable("idDiaChi") Integer idDiaChi, @RequestBody DiaChiRequest diaChiRequest) throws Exception {
         DiaChiResponse diaChiResponse = diaChiServiceImpl.updateDC(idDiaChi,diaChiRequest);
+
         return ResponseEntity.status(HttpStatus.OK).body(diaChiResponse);
     }
     @PutMapping("/updateDefault/{idKhachHang}/{idDiaChi}")
