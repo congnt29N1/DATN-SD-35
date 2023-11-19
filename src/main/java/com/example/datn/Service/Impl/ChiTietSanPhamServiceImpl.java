@@ -1,15 +1,24 @@
 package com.example.datn.Service.Impl;
 
 import com.example.datn.Entity.ChiTietSanPham;
+import com.example.datn.Entity.LopLot;
 import com.example.datn.Exception.ChiTietSanPhamNotFountException;
 import com.example.datn.Repository.ChiTietSanPhamRepository;
 import com.example.datn.Response.SanPhamAdminResponse;
 import com.example.datn.Response.TimKiemSettingResponse;
+import com.example.datn.Service.CauTrucKhuyService;
+import com.example.datn.Service.ChatLieuService;
 import com.example.datn.Service.ChiTietSanPhamService;
 import com.example.datn.Service.DanhmucService;
+import com.example.datn.Service.HoaTietService;
 import com.example.datn.Service.KhuyenMaiService;
 import com.example.datn.Service.KichCoService;
+import com.example.datn.Service.KieuDetService;
+import com.example.datn.Service.KieuTuiService;
+import com.example.datn.Service.LopLotService;
 import com.example.datn.Service.MauSacService;
+import com.example.datn.Service.VeAoService;
+import com.example.datn.Service.XeTaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,9 +40,26 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     @Autowired
     KhuyenMaiService khuyenMaiService;
     @Autowired
+    CauTrucKhuyService cauTrucKhuyService;
+    @Autowired
     MauSacService mauSacService;
     @Autowired
+    ChatLieuService chatLieuService;
+    @Autowired
     KichCoService kichCoService;
+    @Autowired
+    HoaTietService hoaTietService;
+    @Autowired
+    KieuDetService kieuDetService;
+    @Autowired
+    KieuTuiService kieuTuiService;
+    @Autowired
+    VeAoService veAoService;
+    @Autowired
+    XeTaService xeTaService;
+    @Autowired
+    LopLotService lopLotService;
+
     @Override
     public int totalPageSearchSP(String key, int pageNum) {
         return chiTietSanPhamRepository.searchByKey(key, PageRequest.of(pageNum - 1, 5)).getTotalPages();
@@ -63,7 +89,14 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
         TimKiemSettingResponse result = new TimKiemSettingResponse();
         result.setListDanhMuc(danhmucService.listAll());
         result.setListKichCo(kichCoService.getAllKichCo());
-        result.setListMauSac(mauSacService.getAllMauSac());
+        result.setListcauTrucKhuy(cauTrucKhuyService.getAllCauTrucKhuy());
+        result.setListchatLieu(chatLieuService.getAllChatLieu());
+        result.setListHoaTiet(hoaTietService.getAllHoaTiet());
+        result.setListkieuDet(kieuDetService.getAllKieuDet());
+        result.setListveAo(veAoService.getAllVeAo());
+        result.setListXeTa(xeTaService.getAllXeTa());
+        result.setListlopLot(lopLotService.getAllLopLot());
+        result.setListKieuTui(kieuTuiService.getAllKieuTui());
         return result;
     }
 

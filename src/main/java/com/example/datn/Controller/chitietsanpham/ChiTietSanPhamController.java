@@ -1,11 +1,15 @@
 package com.example.datn.Controller.chitietsanpham;
 
+import com.example.datn.Entity.CauTrucKhuy;
+import com.example.datn.Entity.ChatLieu;
 import com.example.datn.Entity.ChiTietSanPham;
 import com.example.datn.Entity.KhuyenMai;
 import com.example.datn.Entity.KichCo;
 import com.example.datn.Entity.MauSac;
 import com.example.datn.Entity.SanPham;
 import com.example.datn.Exception.ChiTietSanPhamNotFountException;
+import com.example.datn.Service.CauTrucKhuyService;
+import com.example.datn.Service.ChatLieuService;
 import com.example.datn.Service.ChiTietSanPhamService;
 import com.example.datn.Service.KhuyenMaiService;
 import com.example.datn.Service.KichCoService;
@@ -34,7 +38,11 @@ public class ChiTietSanPhamController {
     @Autowired
     private SanPhamService sanPhamService;
     @Autowired
+    private ChatLieuService chatLieuService;
+    @Autowired
     private MauSacService mauSacService;
+    @Autowired
+    private CauTrucKhuyService cauTrucKhuyService;
     @Autowired
     private KhuyenMaiService khuyenMaiService;
     @Autowired
@@ -91,16 +99,20 @@ public class ChiTietSanPhamController {
             return "redirect:/login-admin" ;
         }
         List<SanPham> listSanPham = sanPhamService.listAll();
+        List<ChatLieu> listChatLieu = chatLieuService.getAllChatLieu();
         List<KhuyenMai> listKhuyenMai = khuyenMaiService.listAll();
         List<MauSac> listMauSac = mauSacService.getAllMauSac();
         List<KichCo> listKichCo = kichCoService.getAllKichCo();
+        List<CauTrucKhuy> listCauTrucKhuy = cauTrucKhuyService.getAllCauTrucKhuy();
         ChiTietSanPham chiTietSanPham = new ChiTietSanPham();
         chiTietSanPham.setTrangThai(1);
         model.addAttribute("chiTietSanPham",chiTietSanPham);
         model.addAttribute("listKhuyenMai",listKhuyenMai);
         model.addAttribute("listSanPham",listSanPham);
+        model.addAttribute("listChatLieu",listChatLieu);
         model.addAttribute("listMauSac",listMauSac);
         model.addAttribute("listKichCo",listKichCo);
+        model.addAttribute("listCauTrucKhuy",listCauTrucKhuy);
         return "admin/chitietsanpham/product_detail_create";
     }
     @PostMapping("/admin/productDetails/save")

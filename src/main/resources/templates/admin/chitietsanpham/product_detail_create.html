@@ -76,6 +76,30 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">Cấu Trúc Khuy:</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{cauTrucKhuy}" class="form-control" required="" name="cauTrucKhuy">
+                                <th:block th:each="ctkhuy : ${listCauTrucKhuy}">
+                                    <th:block th:if="${ctkhuy.enabled == true}">
+                                        <option th:value="${ctkhuy.idCauTrucKhuy}">[[${ctkhuy.tenCauTrucKhuy}]]</option>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">Chất Liệu:</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{chatLieu}" class="form-control" required="" name="chatLieu">
+                                <th:block th:each="chatLieu : ${listChatLieu}">
+                                    <th:block th:if="${chatLieu.enabled == true}">
+                                        <option th:value="${chatLieu.idChatLieu}">[[${chatLieu.tenChatLieu}]]</option>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Giày Phù Hợp:</label>
