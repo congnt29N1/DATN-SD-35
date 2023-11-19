@@ -1,4 +1,4 @@
-package com.example.datn.security;
+package com.example.datn.Security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

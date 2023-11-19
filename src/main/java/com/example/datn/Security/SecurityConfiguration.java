@@ -1,4 +1,4 @@
-package com.example.datn.security;
+package com.example.datn.Security;
 
 import com.example.datn.repository.NhanVienRepository;
 import lombok.AllArgsConstructor;
