@@ -1,4 +1,4 @@
-package com.example.datn.security;
+package com.example.datn.Security;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import java.io.IOException;
 @AllArgsConstructor
 @Component
 public class AccounFilter extends OncePerRequestFilter {
-    private final com.example.datn.security.AccountFilterService accountFilterService;
+    private final com.example.datn.Security.AccountFilterService accountFilterService;
     private final UserDetailsService userDetailsService;
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {

@@ -3,7 +3,7 @@ package com.example.datn.Controller;
 import com.example.datn.Entity.NhanVien;
 import com.example.datn.repository.NhanVienRepository;
 import com.example.datn.request.LoginAdminRequest;
-import com.example.datn.security.AccountFilterService;
+import com.example.datn.Security.AccountFilterService;
 import com.example.datn.service.NhanVienService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.validation.BindingResult;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
