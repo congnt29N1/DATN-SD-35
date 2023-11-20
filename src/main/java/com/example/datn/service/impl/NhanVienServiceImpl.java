@@ -1,10 +1,10 @@
-package com.example.datn.service.impl;
+package com.example.datn.Service.Impl;
 
 import com.example.datn.Entity.ChucVu;
 import com.example.datn.Entity.NhanVien;
+import com.example.datn.Repository.NhanVienRepository;
 import com.example.datn.exception.NhanVienNotFoundException;
 import com.example.datn.repository.ChucVuRepository;
-import com.example.datn.repository.NhanVienRepository;
 import com.example.datn.service.NhanVienService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
