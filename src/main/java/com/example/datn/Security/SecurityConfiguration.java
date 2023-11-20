@@ -1,6 +1,6 @@
 package com.example.datn.Security;
 
-import com.example.datn.repository.NhanVienRepository;
+import com.example.datn.Repository.NhanVienRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
