@@ -47,23 +47,49 @@
                 <table class="table table-bordered table-striped table-hover table-responsive-xl">
                     <thead class="thead-dark">
                     <tr>
-                        <th th:replace="admin/fragment/fragments::productDetails_link('idChiTietSanPham', 'ID')"></th>
+<!--                        <th th:replace="admin/fragment/fragments::productDetails_link('idChiTietSanPham', 'ID')"></th>-->
                         <th th:replace="admin/fragment/fragments::productDetails_link('maChiTietSanPham', 'Mã')"></th>
-                        <th th:replace="admin/fragment/fragments::productDetails_link('sanPham', 'SảnPhẩm')"></th>
-                        <th th:replace="admin/fragment/fragments::productDetails_link('khuyenMai', 'KhuyếnMãi')"></th>
-                        <th th:replace="admin/fragment/fragments::productDetails_link('mauSac', 'MàuSắc')"></th>
-                        <th>Giá</th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('sanPham', 'Sản Phẩm')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('khuyenMai', 'Khuyến Mãi')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('mauSac', 'Màu Sắc')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('cauTrucKhuy', 'Cấu Trúc Khuy')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('chatLieu', 'Chất Liệu')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('hoaTiet', 'Hoạ Tiết')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('kichCo', 'Kích Cỡ')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('kieuDet', 'Kiểu Dệt')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('kieuTui', 'Kiểu Túi')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('lopLot', 'Lớp Lót')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('veAo', 'Ve Áo')"></th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('xeTa', 'Xẻ Tà')"></th>
+                        <th>Giày Phù Hợp</th>
+                        <th>Sơ Mi Phù Hợp</th>
+                        <th th:replace="admin/fragment/fragments::productDetails_link('soLuong', 'Số Lượng')"></th>
+<!--                        <th>Số Lượng</th>-->
+<!--                        <th>Giá</th>-->
+                        <th th:replace="admin/fragment/fragments::productDetails_link('giaSanPham', 'Giá')"></th>
                         <th>Trạng Thái</th>
                         <Th>Action</Th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="ctsp :${listChiTietSanPham}">
-                        <td>[[${ctsp.idChiTietSanPham}]]</td>
+<!--                        <td>[[${ctsp.idChiTietSanPham}]]</td>-->
                         <td>[[${ctsp.maChiTietSanPham}]]</td>
                         <td>[[${ctsp.sanPham.tenSanPham}]]</td>
                         <td >[[${ctsp.khuyenMai == null ? "" : ctsp.khuyenMai.enabled == false ? "" : ctsp.khuyenMai.tenKhuyenMai}]]</td>
                         <td>[[${ctsp.mauSac.tenMauSac}]]</td>
+                        <td>[[${ctsp.cauTrucKhuy.tenCauTrucKhuy}]]</td>
+                        <td>[[${ctsp.chatLieu.tenChatLieu}]]</td>
+                        <td>[[${ctsp.hoaTiet.tenHoaTiet}]]</td>
+                        <td>[[${ctsp.kichCo.tenKichCo}]]</td>
+                        <td>[[${ctsp.kieuDet.tenKieuDet}]]</td>
+                        <td>[[${ctsp.kieuTui.tenKieuTui}]]</td>
+                        <td>[[${ctsp.lopLot.tenLopLot}]]</td>
+                        <td>[[${ctsp.veAo.tenVeAo}]]</td>
+                        <td>[[${ctsp.xeTa.tenXeTa}]]</td>
+                        <td>[[${ctsp.giayPhuHop}]]</td>
+                        <td>[[${ctsp.soMiPhuHop}]]</td>
+                        <td>[[${ctsp.soLuong}]]</td>
                         <td th:text="${#numbers.formatDecimal(ctsp.giaSanPham, 0, 'COMMA', 0, 'POINT')} +
                          ' đ'">[[${ctsp.giaSanPham}]]</td>
                         <td>

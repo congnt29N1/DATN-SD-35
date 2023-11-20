@@ -1,16 +1,32 @@
 package com.example.datn.Controller.chitietsanpham;
 
+import com.example.datn.Entity.CauTrucKhuy;
+import com.example.datn.Entity.ChatLieu;
 import com.example.datn.Entity.ChiTietSanPham;
+import com.example.datn.Entity.HoaTiet;
 import com.example.datn.Entity.KhuyenMai;
 import com.example.datn.Entity.KichCo;
+import com.example.datn.Entity.KieuDet;
+import com.example.datn.Entity.KieuTui;
+import com.example.datn.Entity.LopLot;
 import com.example.datn.Entity.MauSac;
 import com.example.datn.Entity.SanPham;
+import com.example.datn.Entity.VeAo;
+import com.example.datn.Entity.XeTa;
 import com.example.datn.Exception.ChiTietSanPhamNotFountException;
+import com.example.datn.Service.CauTrucKhuyService;
+import com.example.datn.Service.ChatLieuService;
 import com.example.datn.Service.ChiTietSanPhamService;
+import com.example.datn.Service.HoaTietService;
 import com.example.datn.Service.KhuyenMaiService;
 import com.example.datn.Service.KichCoService;
+import com.example.datn.Service.KieuDetService;
+import com.example.datn.Service.KieuTuiService;
+import com.example.datn.Service.LopLotService;
 import com.example.datn.Service.MauSacService;
 import com.example.datn.Service.SanPhamService;
+import com.example.datn.Service.VeAoService;
+import com.example.datn.Service.XeTaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
@@ -39,6 +55,22 @@ public class ChiTietSanPhamController {
     private KhuyenMaiService khuyenMaiService;
     @Autowired
     private KichCoService kichCoService;
+    @Autowired
+    private CauTrucKhuyService cauTrucKhuyService;
+    @Autowired
+    private ChatLieuService chatLieuService;
+    @Autowired
+    private HoaTietService hoaTietService;
+    @Autowired
+    private KieuDetService kieuDetService;
+    @Autowired
+    private KieuTuiService kieuTuiService;
+    @Autowired
+    private VeAoService veAoService;
+    @Autowired
+    private LopLotService lopLotService;
+    @Autowired
+    private XeTaService xeTaService;
     @Autowired
     HttpServletRequest request;
 
@@ -94,6 +126,14 @@ public class ChiTietSanPhamController {
         List<KhuyenMai> listKhuyenMai = khuyenMaiService.listAll();
         List<MauSac> listMauSac = mauSacService.getAllMauSac();
         List<KichCo> listKichCo = kichCoService.getAllKichCo();
+        List<CauTrucKhuy> cauTrucKhuyList = cauTrucKhuyService.getAllCauTrucKhuy();
+        List<ChatLieu> chatLieuList = chatLieuService.getAllChatLieu();
+        List<HoaTiet> hoaTietList = hoaTietService.getAllHoaTiet();
+        List<KieuDet> kieuDetList = kieuDetService.getAllKieuDet();
+        List<KieuTui> kieuTuiList = kieuTuiService.getAllKieuTui();
+        List<VeAo> veAoList = veAoService.getAllVeAo();
+        List<LopLot> lopLotList = lopLotService.getAllLopLot();
+        List<XeTa> xeTaList = xeTaService.getAllXeTa();
         ChiTietSanPham chiTietSanPham = new ChiTietSanPham();
         chiTietSanPham.setTrangThai(1);
         model.addAttribute("chiTietSanPham",chiTietSanPham);
@@ -101,6 +141,14 @@ public class ChiTietSanPhamController {
         model.addAttribute("listSanPham",listSanPham);
         model.addAttribute("listMauSac",listMauSac);
         model.addAttribute("listKichCo",listKichCo);
+        model.addAttribute("cauTrucKhuyList",cauTrucKhuyList);
+        model.addAttribute("chatLieuList",chatLieuList);
+        model.addAttribute("hoaTietList",hoaTietList);
+        model.addAttribute("kieuDetList",kieuDetList);
+        model.addAttribute("kieuTuiList",kieuTuiList);
+        model.addAttribute("veAoList",veAoList);
+        model.addAttribute("lopLotList",lopLotList);
+        model.addAttribute("xeTaList",xeTaList);
         return "admin/chitietsanpham/product_detail_create";
     }
     @PostMapping("/admin/productDetails/save")
@@ -141,11 +189,30 @@ public class ChiTietSanPhamController {
             }
             ChiTietSanPham chiTietSanPham = chiTietSanPhamService.get(id);
             List<SanPham> listSanPham = sanPhamService.listAll();
+            List<KhuyenMai> listKhuyenMai = khuyenMaiService.listAll();
             List<MauSac> listMauSac = mauSacService.getAllMauSac();
-
+            List<KichCo> listKichCo = kichCoService.getAllKichCo();
+            List<CauTrucKhuy> cauTrucKhuyList = cauTrucKhuyService.getAllCauTrucKhuy();
+            List<ChatLieu> chatLieuList = chatLieuService.getAllChatLieu();
+            List<HoaTiet> hoaTietList = hoaTietService.getAllHoaTiet();
+            List<KieuDet> kieuDetList = kieuDetService.getAllKieuDet();
+            List<KieuTui> kieuTuiList = kieuTuiService.getAllKieuTui();
+            List<VeAo> veAoList = veAoService.getAllVeAo();
+            List<LopLot> lopLotList = lopLotService.getAllLopLot();
+            List<XeTa> xeTaList = xeTaService.getAllXeTa();
             model.addAttribute("chiTietSanPham",chiTietSanPham);
+            model.addAttribute("listKhuyenMai",listKhuyenMai);
             model.addAttribute("listSanPham",listSanPham);
             model.addAttribute("listMauSac",listMauSac);
+            model.addAttribute("listKichCo",listKichCo);
+            model.addAttribute("cauTrucKhuyList",cauTrucKhuyList);
+            model.addAttribute("chatLieuList",chatLieuList);
+            model.addAttribute("hoaTietList",hoaTietList);
+            model.addAttribute("kieuDetList",kieuDetList);
+            model.addAttribute("kieuTuiList",kieuTuiList);
+            model.addAttribute("veAoList",veAoList);
+            model.addAttribute("lopLotList",lopLotList);
+            model.addAttribute("xeTaList",xeTaList);
 
             return "admin/chitietsanpham/product_detail_edit";
         }catch (ChiTietSanPhamNotFountException e){

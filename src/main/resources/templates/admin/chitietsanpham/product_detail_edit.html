@@ -21,7 +21,8 @@
                     <div class="form-group-row">
                         <label class="col-sm-2 col-form-label">Mã Chi Tiết Sản Phẩm:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" th:field="*{maChiTietSanPham}" name="maChiTietSanPham" readonly="readonly" minlength="3" maxlength="12"/>
+                            <input type="text" class="form-control" th:field="*{maChiTietSanPham}"
+                                   name="maChiTietSanPham" required minlength="3" maxlength="12"/>
                         </div>
                     </div>
 
@@ -35,10 +36,12 @@
                             </select>
                         </div>
                     </div>
+
+
                     <div class="form-group-row">
                         <label class="col-sm-2 col-form-label">Khuyến Mãi:</label>
                         <div class="col-sm-10">
-                            <select th:field="*{khuyenMai}" class="form-control"  name="khuyenMai">
+                            <select th:field="*{khuyenMai}" class="form-control" name="khuyenMai">
                                 <option value="">-- Không có khuyến mãi --</option>
                                 <th:block th:each="kmai : ${listKhuyenMai}">
                                     <option th:value="${kmai.idKhuyenMai}">[[${kmai.tenKhuyenMai}]]</option>
@@ -46,6 +49,7 @@
                             </select>
                         </div>
                     </div>
+
 
                     <div class="form-group-row">
                         <label class="col-sm-2 col-form-label">Màu Sắc:</label>
@@ -56,6 +60,7 @@
                                         <option th:value="${msac.idMauSac}">[[${msac.tenMauSac}]]</option>
                                     </th:block>
                                 </th:block>
+
                             </select>
                         </div>
                     </div>
@@ -69,36 +74,138 @@
                                         <option th:value="${kco.idKichCo}">[[${kco.tenKichCo}]]</option>
                                     </th:block>
                                 </th:block>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">Cấu Trúc Khuy:</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{cauTrucKhuy}" class="form-control" required="" name="cauTrucKhuy">
+                                <th:block th:each="ctkhuy : ${cauTrucKhuyList}">
+                                    <th:block th:if="${ctkhuy.enabled == true}">
+                                        <option th:value="${ctkhuy.idCauTrucKhuy}">[[${ctkhuy.tenCauTrucKhuy}]]</option>
+                                    </th:block>
+                                </th:block>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">Chất Liệu:</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{chatLieu}" class="form-control" required="" name="chatLieu">
+                                <th:block th:each="chatLieu : ${chatLieuList}">
+                                    <th:block th:if="${chatLieu.enabled == true}">
+                                        <option th:value="${chatLieu.idChatLieu}">[[${chatLieu.tenChatLieu}]]</option>
+                                    </th:block>
+                                </th:block>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">Hoạ Tiết:</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{hoaTiet}" class="form-control" required="" name="hoaTiet">
+                                <th:block th:each="hoaTiet : ${hoaTietList}">
+                                    <th:block th:if="${hoaTiet.enabled == true}">
+                                        <option th:value="${hoaTiet.idHoaTiet}">[[${hoaTiet.tenHoaTiet}]]</option>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">Kiểu Dệt:</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{kieuDet}" class="form-control" required="" name="kieuDet">
+                                <th:block th:each="kieuDet : ${kieuDetList}">
+                                    <th:block th:if="${kieuDet.enabled == true}">
+                                        <option th:value="${kieuDet.idKieuDet}">[[${kieuDet.tenKieuDet}]]</option>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">Kiểu Túi:</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{kieuTui}" class="form-control" required="" name="kieuTui">
+                                <th:block th:each="kieuTui : ${kieuTuiList}">
+                                    <th:block th:if="${kieuTui.enabled == true}">
+                                        <option th:value="${kieuTui.idKieuTui}">[[${kieuTui.tenKieuTui}]]</option>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">Ve Áo:</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{veAo}" class="form-control" required="" name="veAo">
+                                <th:block th:each="veAo : ${veAoList}">
+                                    <th:block th:if="${veAo.enabled == true}">
+                                        <option th:value="${veAo.idVeAo}">[[${veAo.tenVeAo}]]</option>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">Lớp Lót:</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{lopLot}" class="form-control" required="" name="lopLot">
+                                <th:block th:each="lopLot : ${lopLotList}">
+                                    <th:block th:if="${lopLot.enabled == true}">
+                                        <option th:value="${lopLot.idLopLot}">[[${lopLot.tenLopLot}]]</option>
+                                    </th:block>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">Xẻ Tà:</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{xeTa}" class="form-control" required="" name="xeTa">
+                                <th:block th:each="xeTa : ${xeTaList}">
+                                    <th:block th:if="${xeTa.enabled == true}">
+                                        <option th:value="${xeTa.idXeTa}">[[${xeTa.tenXeTa}]]</option>
+                                    </th:block>
+                                </th:block>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Giày Phù Hợp:</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" th:field="*{giayPhuHop}"  required/>
+                            <input type="text" class="form-control" th:field="*{giayPhuHop}" required/>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Sơ Mi Phù Hợp:</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" th:field="*{soMiPhuHop}"  required />
+                            <input type="text" class="form-control" th:field="*{soMiPhuHop}" required/>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Số Lượng:</label>
                         <div class="col-sm-12">
-                            <input type="number" class="form-control" th:field="*{soLuong}"  required min="0" max="100000"/>
+                            <input type="number" class="form-control" th:field="*{soLuong}" required min="0"
+                                   max="100000"/>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Giá Bán:</label>
                         <div class="col-sm-12">
-                            <input type="number" class="form-control" th:field="*{giaSanPham}"  required min="100000" max="1000000000"/>
+                            <input type="number" class="form-control" th:field="*{giaSanPham}" required min="100000"
+                                   max="1000000000"/>
                         </div>
                     </div>
+
 
                     <div class="form-group-row">
                         <label class="col-sm-4 col-form-label">Trạng Thái:</label>
