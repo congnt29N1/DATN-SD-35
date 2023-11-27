@@ -19,6 +19,14 @@ myApp.config(function ($routeProvider, $locationProvider,$httpProvider) {
         .when("/blog", {
             templateUrl: "page/blog.html",
         })
+        .when("/sanpham", {
+            templateUrl: "page/shop-gird.html",
+            controller: "SanPhamController"
+        })
+        .when("/chitietsanpham/:idSp", {
+            templateUrl: "page/single-product.html",
+            controller: "TrangChiTietSanPhamController"
+        })
         .otherwise({
             redirectTo: "/",
         });

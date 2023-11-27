@@ -161,7 +161,18 @@ public class ChiTietSanPhamController {
         Integer count = 0;
         for (ChiTietSanPham ctsp: list
         ) {
-            if(ctsp.getMauSac()== chiTietSanPham.getMauSac()){
+            if(ctsp.getMauSac()== chiTietSanPham.getMauSac() &&
+                ctsp.getKhuyenMai()== chiTietSanPham.getKhuyenMai()&&
+                ctsp.getCauTrucKhuy()== chiTietSanPham.getCauTrucKhuy()&&
+                ctsp.getChatLieu()== chiTietSanPham.getChatLieu()&&
+                ctsp.getKichCo()== chiTietSanPham.getKichCo()&&
+                ctsp.getHoaTiet()== chiTietSanPham.getHoaTiet()&&
+                ctsp.getKieuTui()== chiTietSanPham.getKieuTui()&&
+                ctsp.getKieuDet()== chiTietSanPham.getKieuDet()&&
+                ctsp.getVeAo()== chiTietSanPham.getVeAo()&&
+                ctsp.getLopLot()== chiTietSanPham.getLopLot()&&
+                ctsp.getXeTa()== chiTietSanPham.getXeTa()
+            ){
                 if (ctsp.getIdChiTietSanPham() == chiTietSanPham.getIdChiTietSanPham()) {
                     count = 0;
                 } else {
@@ -230,7 +241,18 @@ public class ChiTietSanPhamController {
         Integer count = 0;
         for (ChiTietSanPham ctsp: list
         ) {
-            if(ctsp.getMauSac()== chiTietSanPham.getMauSac() ){
+            if(ctsp.getMauSac()== chiTietSanPham.getMauSac() &&
+                    ctsp.getKhuyenMai()== chiTietSanPham.getKhuyenMai()&&
+                    ctsp.getCauTrucKhuy()== chiTietSanPham.getCauTrucKhuy()&&
+                    ctsp.getChatLieu()== chiTietSanPham.getChatLieu()&&
+                    ctsp.getKichCo()== chiTietSanPham.getKichCo()&&
+                    ctsp.getHoaTiet()== chiTietSanPham.getHoaTiet()&&
+                    ctsp.getKieuTui()== chiTietSanPham.getKieuTui()&&
+                    ctsp.getKieuDet()== chiTietSanPham.getKieuDet()&&
+                    ctsp.getVeAo()== chiTietSanPham.getVeAo()&&
+                    ctsp.getLopLot()== chiTietSanPham.getLopLot()&&
+                    ctsp.getXeTa()== chiTietSanPham.getXeTa()
+            ){
                 if (ctsp.getIdChiTietSanPham() == chiTietSanPham.getIdChiTietSanPham()) {
                     count = 0;
                 } else {

@@ -9,10 +9,11 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 public interface ChiTietSanPhamService {
-    public static final int PRODUCT_DETAIL_PER_PAGE = 10;
+    public static final int PRODUCT_DETAIL_PER_PAGE = 3;
     int totalPageSearchSP(String key, int pageNum);
     List<SanPhamAdminResponse> searchSP(String key, int pageNum);
     TimKiemSettingResponse getTimKiemSetting ();
+    Integer countSoLuong (Integer idChiTietSanPham);
     ChiTietSanPham getChiTietSanPhamById(Integer id);
     ChiTietSanPham update(ChiTietSanPham chiTietSanPham);
     Page<ChiTietSanPham> findByMaSP(String maSanPham, int pageNum);
@@ -28,7 +29,6 @@ public interface ChiTietSanPhamService {
     public boolean isUniqueChiTietSanPham(
             String maChiTietSanPham,
             String tenSanPham,
-            String tenKhuyenMai,
             String tenMauSac,
             String tenChatLieu,
             String tenKichCo,
@@ -37,14 +37,13 @@ public interface ChiTietSanPhamService {
             String tenKieuTui,
             String tenKieuDet,
             String tenLopLot,
-            String tenVeAo,
-            String tenXeTa
+            String tenXeTa,
+            String tenVeAo
     );
     public boolean isUniqueChiTietSanPhamUpdate(
             Integer idChiTietSanPham,
             String maChiTietSanPham,
             String tenSanPham,
-            String tenKhuyenMai,
             String tenMauSac,
             String tenChatLieu,
             String tenKichCo,

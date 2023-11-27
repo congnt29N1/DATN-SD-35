@@ -5,6 +5,7 @@ import com.example.datn.Exception.ChiTietSanPhamNotFountException;
 import com.example.datn.Repository.ChiTietSanPhamRepository;
 import com.example.datn.Response.SanPhamAdminResponse;
 import com.example.datn.Response.TimKiemSettingResponse;
+import com.example.datn.Service.ChatLieuService;
 import com.example.datn.Service.ChiTietSanPhamService;
 import com.example.datn.Service.DanhmucService;
 import com.example.datn.Service.KhuyenMaiService;
@@ -34,6 +35,8 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     MauSacService mauSacService;
     @Autowired
     KichCoService kichCoService;
+    @Autowired
+    ChatLieuService chatLieuService;
     @Override
     public int totalPageSearchSP(String key, int pageNum) {
         return chiTietSanPhamRepository.searchByKey(key, PageRequest.of(pageNum - 1, 5)).getTotalPages();
@@ -64,7 +67,13 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
         result.setListDanhMuc(danhmucService.listAll());
         result.setListKichCo(kichCoService.getAllKichCo());
         result.setListMauSac(mauSacService.getAllMauSac());
+        result.setListchatLieu(chatLieuService.getAllChatLieu());
         return result;
+    }
+
+    @Override
+    public Integer countSoLuong(Integer idChiTietSanPham) {
+        return chiTietSanPhamRepository.countSoLuong(idChiTietSanPham);
     }
 
     @Override
@@ -122,21 +131,21 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     }
 
     @Override
-    public boolean isUniqueChiTietSanPham(String maChiTietSanPham, String tenSanPham, String tenKhuyenMai, String tenMauSac, String tenChatLieu, String tenKichCo, String tenCauTrucKhuy, String tenHoaTiet, String tenKieuTui, String tenKieuDet, String tenLopLot, String tenVeAo, String tenXeTa) {
+    public boolean isUniqueChiTietSanPham(String maChiTietSanPham, String tenSanPham, String tenXeTa, String tenMauSac, String tenChatLieu, String tenKichCo, String tenCauTrucKhuy, String tenHoaTiet, String tenKieuTui, String tenKieuDet, String tenLopLot, String tenVeAo) {
         ChiTietSanPham existingByMa = chiTietSanPhamRepository.findByMaChiTietSanPham(maChiTietSanPham);
-        ChiTietSanPham existingByNames = chiTietSanPhamRepository.findBySanPham_TenSanPhamAndKhuyenMai_TenKhuyenMaiAndMauSac_TenMauSacAndChatLieu_TenChatLieuAndKichCo_TenKichCoAndCauTrucKhuy_TenCauTrucKhuyAndHoaTiet_TenHoaTietAndKieuTui_TenKieuTuiAndKieuDet_TenKieuDetAndLopLot_TenLopLotAndVeAo_TenVeAoAndXeTa_TenXeTa(
-                tenSanPham,tenKhuyenMai,tenMauSac,tenChatLieu,tenKichCo,tenCauTrucKhuy,tenHoaTiet,tenKieuTui,tenKieuDet,tenLopLot,tenVeAo,tenXeTa
+        ChiTietSanPham existingByNames = chiTietSanPhamRepository.findBySanPham_TenSanPhamAndMauSac_TenMauSacAndChatLieu_TenChatLieuAndKichCo_TenKichCoAndCauTrucKhuy_TenCauTrucKhuyAndHoaTiet_TenHoaTietAndKieuTui_TenKieuTuiAndKieuDet_TenKieuDetAndLopLot_TenLopLotAndVeAo_TenVeAoAndXeTa_TenXeTa(
+                tenSanPham,tenMauSac,tenChatLieu,tenKichCo,tenCauTrucKhuy,tenHoaTiet,tenKieuTui,tenKieuDet,tenLopLot,tenVeAo,tenXeTa
         );
 
         return (existingByMa == null && existingByNames == null);
     }
 
     @Override
-    public boolean isUniqueChiTietSanPhamUpdate(Integer idChiTietSanPham, String maChiTietSanPham, String tenSanPham, String tenKhuyenMai, String tenMauSac, String tenChatLieu, String tenKichCo, String tenCauTrucKhuy, String tenHoaTiet, String tenKieuTui, String tenKieuDet, String tenLopLot, String tenVeAo, String tenXeTa) {
+    public boolean isUniqueChiTietSanPhamUpdate(Integer idChiTietSanPham, String maChiTietSanPham, String tenSanPham, String tenMauSac, String tenChatLieu, String tenKichCo, String tenCauTrucKhuy, String tenHoaTiet, String tenKieuTui, String tenKieuDet, String tenLopLot, String tenVeAo, String tenXeTa) {
         ChiTietSanPham existingById = chiTietSanPhamRepository.findByIdChiTietSanPham(idChiTietSanPham);
         ChiTietSanPham existingByMa = chiTietSanPhamRepository.findByMaChiTietSanPham(maChiTietSanPham);
-        ChiTietSanPham existingByNames = chiTietSanPhamRepository.findBySanPham_TenSanPhamAndKhuyenMai_TenKhuyenMaiAndMauSac_TenMauSacAndChatLieu_TenChatLieuAndKichCo_TenKichCoAndCauTrucKhuy_TenCauTrucKhuyAndHoaTiet_TenHoaTietAndKieuTui_TenKieuTuiAndKieuDet_TenKieuDetAndLopLot_TenLopLotAndVeAo_TenVeAoAndXeTa_TenXeTa(
-                tenSanPham,tenKhuyenMai,tenMauSac,tenChatLieu,tenKichCo,tenCauTrucKhuy,tenHoaTiet,tenKieuTui,tenKieuDet,tenLopLot,tenVeAo,tenXeTa
+        ChiTietSanPham existingByNames = chiTietSanPhamRepository.findBySanPham_TenSanPhamAndMauSac_TenMauSacAndChatLieu_TenChatLieuAndKichCo_TenKichCoAndCauTrucKhuy_TenCauTrucKhuyAndHoaTiet_TenHoaTietAndKieuTui_TenKieuTuiAndKieuDet_TenKieuDetAndLopLot_TenLopLotAndVeAo_TenVeAoAndXeTa_TenXeTa(
+                tenSanPham,tenMauSac,tenChatLieu,tenKichCo,tenCauTrucKhuy,tenHoaTiet,tenKieuTui,tenKieuDet,tenLopLot,tenVeAo,tenXeTa
         );
 
         return (existingByMa == null && existingByNames == null && existingById == null);

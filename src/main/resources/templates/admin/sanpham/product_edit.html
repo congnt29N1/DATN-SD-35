@@ -13,8 +13,10 @@
             </div>
 
             <form th:action="@{/admin/products/update}" method="post" onsubmit="return checkUniqueEdit(this)"
-                  enctype="multipart/form-data" th:object="${sanPham}">
-                <input type="hidden" th:field="*{currentMainImage}" th:value="${sanPham.mainImage}"/>
+                  enctype="multipart/form-data"
+                  th:object="${sanPham}">
+                <input type="hidden" th:field="*{idSanPham}"/>
+                <input type="hidden" th:field="*{currentMainImage}" th:value="${sanPham.mainImage}" />
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

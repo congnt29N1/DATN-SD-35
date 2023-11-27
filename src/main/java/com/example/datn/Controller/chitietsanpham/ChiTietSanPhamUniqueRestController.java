@@ -19,7 +19,6 @@ public class ChiTietSanPhamUniqueRestController {
     public String checkUniqueDetails(
             @RequestParam String maChiTietSanPham,
             @RequestParam String tenSanPham,
-            @RequestParam String tenKhuyenMai,
             @RequestParam String tenMauSac,
             @RequestParam String tenChatLieu,
             @RequestParam String tenKichCo,
@@ -32,7 +31,7 @@ public class ChiTietSanPhamUniqueRestController {
             @RequestParam String tenXeTa
     ) {
         boolean isUnique = chiTietSanPhamService.isUniqueChiTietSanPham(
-                maChiTietSanPham,tenSanPham,tenKhuyenMai,tenMauSac,tenChatLieu,tenKichCo,tenCauTrucKhuy,
+                maChiTietSanPham,tenSanPham,tenMauSac,tenChatLieu,tenKichCo,tenCauTrucKhuy,
                 tenHoaTiet,tenKieuTui,tenKieuDet,tenLopLot,tenVeAo,tenXeTa);
         if (isUnique) {
             return "OK";
@@ -47,7 +46,6 @@ public class ChiTietSanPhamUniqueRestController {
             @RequestParam Integer idChiTietSanPham,
             @RequestParam String maChiTietSanPham,
             @RequestParam String tenSanPham,
-            @RequestParam String tenKhuyenMai,
             @RequestParam String tenMauSac,
             @RequestParam String tenChatLieu,
             @RequestParam String tenKichCo,
@@ -60,7 +58,7 @@ public class ChiTietSanPhamUniqueRestController {
             @RequestParam String tenXeTa
     ) {
         boolean isUnique = chiTietSanPhamService.isUniqueChiTietSanPhamUpdate( idChiTietSanPham,maChiTietSanPham,
-                tenSanPham,tenKhuyenMai,tenMauSac,tenChatLieu,tenKichCo,tenCauTrucKhuy,tenHoaTiet,
+                tenSanPham,tenMauSac,tenChatLieu,tenKichCo,tenCauTrucKhuy,tenHoaTiet,
                 tenKieuTui,tenKieuDet,tenLopLot,tenVeAo,tenXeTa
         );
         if (isUnique) {

@@ -70,9 +70,8 @@ public interface ChiTietSanPhamRepository extends JpaRepository<ChiTietSanPham,I
             " ctsp.hoaTiet,' ', ctsp.chatLieu,' ', ctsp.cauTrucKhuy,' ', ctsp.lopLot,' ', ctsp.chatLieu,' ',' '," +
             " ctsp.mauSac,' ',ctsp.sanPham)) LIKE %?1%")
     public Page<ChiTietSanPham> findAll(String keyword,Pageable pageable);
-    ChiTietSanPham findBySanPham_TenSanPhamAndKhuyenMai_TenKhuyenMaiAndMauSac_TenMauSacAndChatLieu_TenChatLieuAndKichCo_TenKichCoAndCauTrucKhuy_TenCauTrucKhuyAndHoaTiet_TenHoaTietAndKieuTui_TenKieuTuiAndKieuDet_TenKieuDetAndLopLot_TenLopLotAndVeAo_TenVeAoAndXeTa_TenXeTa(
+    ChiTietSanPham findBySanPham_TenSanPhamAndMauSac_TenMauSacAndChatLieu_TenChatLieuAndKichCo_TenKichCoAndCauTrucKhuy_TenCauTrucKhuyAndHoaTiet_TenHoaTietAndKieuTui_TenKieuTuiAndKieuDet_TenKieuDetAndLopLot_TenLopLotAndVeAo_TenVeAoAndXeTa_TenXeTa(
             String tenSanPham,
-            String tenKhuyenMai,
             String tenMauSac,
             String tenChatLieu,
             String tenKichCo,
@@ -84,4 +83,6 @@ public interface ChiTietSanPhamRepository extends JpaRepository<ChiTietSanPham,I
             String tenVeAo,
             String tenXeTa
     );
+    @Query(value = "select count(s) from ChiTietSanPham s where s.trangThai =1" )
+    Integer countSoLuong(Integer chiTietSanPham);
 }
