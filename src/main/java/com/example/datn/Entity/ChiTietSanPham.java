@@ -1,25 +1,11 @@
 package com.example.datn.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -43,6 +29,10 @@ public class ChiTietSanPham {
     private SanPham sanPham;
 
     @ManyToOne
+    @JoinColumn(name = "id_day_deo")
+    private DayDeo dayDeo;
+
+    @ManyToOne
     @JoinColumn(name = "id_khuyen_mai")
     private KhuyenMai khuyenMai;
 
@@ -51,12 +41,35 @@ public class ChiTietSanPham {
     private MauSac mauSac;
 
     @ManyToOne
-    @JoinColumn(name = "id_chat_lieu")
-    private ChatLieu chatLieu;
+    @JoinColumn(name = "id_vat_lieu")
+    private VatLieu vatLieu;
 
     @ManyToOne
     @JoinColumn(name = "id_kich_co")
     private KichCo kichCo;
+
+    @Column(name = "chieu_dai_day_deo")
+    private Double chieuDaiDayDeo;
+
+    @Column(name = "duong_kinh_mat_dong_ho")
+    private Double duongKinhMatDongHo;
+
+    @Column(name = "do_day_mat_dong_ho")
+    private Double doDayMatDongHo;
+
+    @Column(name = "do_chiu_nuoc")
+    private Integer doChiuNuoc;
+
+    @Column(name = "trang_thai")
+    private Integer trangThai;
+
+    @Column(name = "gia_san_pham")
+    private Double giaSanPham;
+    @Column(name = "so_luong")
+    private Integer soLuong;
+    @ManyToOne
+    @JoinColumn(name = "id_chat_lieu")
+    private ChatLieu chatLieu;
     @ManyToOne
     @JoinColumn(name = "id_cau_truc_khuy")
     private CauTrucKhuy cauTrucKhuy;
@@ -74,16 +87,14 @@ public class ChiTietSanPham {
     private LopLot lopLot;
     @ManyToOne
     @JoinColumn(name = "id_ve_ao")
-    private Veao veAo;
+    private VeAo veAo;
     @ManyToOne
     @JoinColumn(name = "id_xe_ta")
     private XeTa xeTa;
-    @Column(name = "so_luong")
-    private Integer soLuong;
-    @Column(name = "gia_san_pham")
-    private Double giaSanPham;
-    @Column(name = "trang_thai")
-    private Integer trangThai;
+    @Column(name = "so_mi_phu_hop")
+    private String soMiPhuHop;
+    @Column(name = "giay_phu_hop")
+    private String giayPhuHop;
     @OneToMany(mappedBy = "chiTietSanPham", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore

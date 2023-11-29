@@ -16,7 +16,7 @@
 <div class="container-fluid text-center">
 
     <div>
-        <img style="margin-top: 20px" th:src="@{/images/5SAdminBig.png}">
+        <img style="margin-top: 10px ;height: auto;width: 300px" th:src="@{/images/leo.png}">
     </div>
     <form th:action="@{/post/login}" method="post" style="max-width: 350px; margin: 0 auto">
         <div th:if="${error}" class="text-danger">
@@ -32,7 +32,6 @@
 
         </div>
         <div class="border border-secondary rounded p-3">
-            <p>Đăng Nhập với 5SWatch Admin</p>
             <p>
                 <input type="email" name="email" placeholder="email" class="form-control" required/>
             </p>
@@ -48,9 +47,6 @@
 
     </form>
 
-    <div class="text-center">
-        <p>5S Watch Control Pannel - copyright &copy; 5S</p>
-    </div>
 
 </div>
 

@@ -1,6 +1,7 @@
 package com.example.datn.Repository;
 
 import com.example.datn.Entity.DanhMuc;
+import com.example.datn.Entity.NhanVien;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +17,9 @@ public interface DanhMucRepository extends JpaRepository<DanhMuc,Integer> {
 
 
     @Query("SELECT dm FROM DanhMuc dm WHERE UPPER(CONCAT(dm.id, ' ', dm.ten)) LIKE %?1%")
-    Page<DanhMuc> findAll(String keyword, Pageable pageable);
+    public Page<DanhMuc> findAll(String keyword, Pageable pageable);
 
-    DanhMuc findByTen(String ten);
+    public DanhMuc findByTen(String ten);
+
+
 }

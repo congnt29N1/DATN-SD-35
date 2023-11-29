@@ -3,12 +3,7 @@ package com.example.datn.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -23,7 +18,7 @@ public class ChucVu {
     private Integer idChucVu;
 
     @Column(name = "ten_chuc_vu", length = 40, nullable = false,unique = true)
-    private String tenChucVu;
+    private Integer tenChucVu;
 
     @Column(name = "TrangThai", length = 150, nullable = false)
     private String mota;
@@ -35,14 +30,7 @@ public class ChucVu {
         this.idChucVu = idChucVu;
     }
 
-    public ChucVu(String tenChucVu) {
-        this.tenChucVu = tenChucVu;
-    }
 
-    public ChucVu(String tenChucVu, String mota) {
-        this.tenChucVu = tenChucVu;
-        this.mota = mota;
-    }
 
     public Integer getIdChucVu() {
         return idChucVu;
@@ -52,13 +40,7 @@ public class ChucVu {
         this.idChucVu = idChucVu;
     }
 
-    public String getTenChucVu() {
-        return tenChucVu;
-    }
 
-    public void setTenChucVu(String tenChucVu) {
-        this.tenChucVu = tenChucVu;
-    }
 
     public String getMota() {
         return mota;
@@ -81,8 +63,5 @@ public class ChucVu {
         return Objects.hash(idChucVu);
     }
 
-    @Override
-    public String toString() {
-        return this.tenChucVu;
-    }
+
 }

@@ -22,12 +22,12 @@ public class DanhMucServiceImpl implements DanhmucService {
     private DanhMucRepository repo;
 
     @Override
-    public List<DanhMuc> listAll() {
-        return repo.findAll(Sort.by("ten").ascending());
+    public List<DanhMuc> listAll(){
+        return (List<DanhMuc>) repo.findAll(Sort.by("ten").ascending());
     }
 
     @Override
-    public Page<DanhMuc> listByPage(int pageNumber, String sortField, String sortDir, String keyword) {
+    public Page<DanhMuc> listByPage(int pageNumber, String sortField, String sortDir, String keyword){
         Sort sort = Sort.by(sortField);
 
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
@@ -47,7 +47,7 @@ public class DanhMucServiceImpl implements DanhmucService {
     }
 
     @Override
-    public DanhMuc save(DanhMuc danhMuc) {
+    public DanhMuc save(DanhMuc danhMuc){
         return repo.save(danhMuc);
     }
 
@@ -62,7 +62,7 @@ public class DanhMucServiceImpl implements DanhmucService {
     }
 
     @Override
-    public boolean checkUnique(Integer id, String ten) {
+    public boolean checkUnique(Integer id, String ten){
         DanhMuc danhMucTheoTen = repo.findByTen(ten);
         if (danhMucTheoTen == null) return true;
         boolean isCreatingNew = (id == null);
@@ -77,4 +77,6 @@ public class DanhMucServiceImpl implements DanhmucService {
         }
         return true;
     }
+
+
 }

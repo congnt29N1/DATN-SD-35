@@ -1,5 +1,6 @@
 package com.example.datn.Repository;
 
+
 import com.example.datn.Entity.MauSac;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MauSacRepository extends JpaRepository<MauSac, Integer> {
+
     @Query(value = "SELECT ms FROM MauSac ms WHERE UPPER(CONCAT(ms.idMauSac, ' ', ms.tenMauSac)) LIKE %?1%")
     public Page<MauSac> findAll(String keyword, Pageable pageable);
 

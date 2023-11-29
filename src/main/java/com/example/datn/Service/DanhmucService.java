@@ -18,4 +18,5 @@ public interface DanhmucService {
     public DanhMuc get(Integer id) throws DanhMucNotFoundException, Exception;
 
     public boolean checkUnique(Integer id, String ten);
+
 }

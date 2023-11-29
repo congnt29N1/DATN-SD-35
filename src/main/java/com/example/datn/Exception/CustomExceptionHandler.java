@@ -14,6 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 
 @RestControllerAdvice
 public class CustomExceptionHandler {
+
     @Qualifier("messageSource")
     @Autowired
     private MessageSource msgSource;
@@ -45,4 +46,30 @@ public class CustomExceptionHandler {
         ErrorResponse error = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,ex.getMessage());
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    public ResponseEntity<?> processValidateError(MethodArgumentNotValidException ex) {
+//        BindingResult result = ex.getBindingResult();
+//        List<FieldError> fieldErrors = result.getFieldErrors();
+//        String message = "";
+//        for (FieldError error : fieldErrors) {
+//            String temp = processFieldError(error);
+//            message += temp + " ; ";
+//        }
+//        ErrorResponse error = new ErrorResponse(HttpStatus.BAD_REQUEST, message);
+//        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+//    }
+
+//    private String processFieldError(FieldError error) {
+//        String msg = "";
+//        if (error != null) {
+//            Locale currentLocale = LocaleContextHolder.getLocale();
+//            try {
+//                msg = msgSource.getMessage(error.getDefaultMessage(), null, currentLocale);
+//            } catch (DanhMucNotFoundException e) {
+//                msg = error.getDefaultMessage();
+//            }
+//        }
+//        return msg;
+//    }
 }
